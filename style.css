@@ -120,90 +120,48 @@ img{ max-width:100%; display:block; }
 
 /* ===== Tracks – Monsoon/Summer accordion (button+JS) ===== */
 .trk-accordion{ display:grid; gap:12px; }
+
 .trk-item{
   --a: var(--accent-colour);   /* start colour */
   --b: #3b82f6;                /* end colour  */
-  border:1px solid var(--border); border-radius: var(--radius);
-  background: var(--card-bg); overflow:hidden;
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  overflow:hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,.18);
 }
+
+/* 기본(닫힘) 상태: 검은 카드 */
 .trk-hdr{
   all: unset; display:grid; width:100%;
-  grid-template-columns:52px 1fr auto; align-items:center; gap:12px;
-  cursor:pointer; user-select:none; padding:16px 16px;
+  grid-template-columns:52px 1fr auto;
+  align-items:center; gap:12px;
+  cursor:pointer; user-select:none;
+  padding:16px 16px;
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--a) 30%, transparent), color-mix(in srgb, var(--b) 18%, transparent)),
     linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
   border-bottom:1px solid var(--border);
 }
-.trk-hdr:hover{ filter:brightness(1.07); }
+.trk-hdr:hover{ filter:brightness(1.06); }
 .trk-hdr:active{ transform: translateY(.5px); }
 
 .trk-no{
   width:36px; height:36px; display:grid; place-items:center;
   border:1px solid var(--border); border-radius:10px;
-  font-weight:800; color:#fff;
-  background: color-mix(in srgb, var(--a) 40%, var(--b) 10%);
+  font-weight:800; color:var(--fg-colour);
+  background: transparent;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
 }
-.trk-title{
-  font-weight:800; letter-spacing:.01em;
-  color: color-mix(in srgb, var(--b) 70%, #ffffff 20%);
-  text-shadow: 0 1px 0 rgba(0,0,0,.25);
-}
-.trk-caret{
-  color: color-mix(in srgb, var(--a) 65%, #ffffff 20%);
-  transition: transform .25s ease; font-size:18px;
-}
+.trk-title{ font-weight:800; letter-spacing:.01em; color: var(--fg-colour); }
+.trk-caret{ color: var(--muted-colour); transition: transform .25s ease; font-size:18px; }
 .trk-item.open .trk-caret{ transform: rotate(180deg); }
 
-/* 패널 – 스르륵 열림/닫힘 (JS로 max-height 제어) */
-.trk-panel{
-  max-height:0; opacity:0; overflow:hidden;
-  padding:0 16px;
-  transition:max-height .35s ease, opacity .25s ease, padding .25s ease;
-  background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-}
-.trk-item.open .trk-panel{ opacity:1; padding:12px 16px 16px; }
-
-/* 본문 */
-.trk-inner{ padding:0; border-left:3px solid color-mix(in srgb, var(--b) 70%, transparent); }
-.trk-quote{
-  margin:12px 0 8px; padding-left:10px;
-  border-left:3px solid color-mix(in srgb, var(--a) 70%, transparent);
-  color:var(--fg-colour); opacity:.95;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 720px){
-  .nav-links{ display:none; }
-  .hero-content{ padding-block:64px; }
-  .lead{ max-width: 48ch; }
-  .trk-hdr{ grid-template-columns:44px 1fr auto; padding:14px 14px; }
-  .trk-no{ width:32px; height:32px; }
-}
-/* ===== Accordion refinements (dark-then-color, spacings) ===== */
-
-/* 1) 기본(닫힘) 상태: 검은 카드 느낌 */
-.trk-hdr{
-  background:
-    linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-  border-bottom: 1px solid var(--border);
-}
-.trk-no{
-  background: transparent;             /* 배지 기본은 비움 */
-  color: var(--fg-colour);
-  border: 1px solid var(--border);
-}
-.trk-title{
-  color: var(--fg-colour);              /* 기본은 흰 글자 */
-}
-.trk-caret{
-  color: var(--muted-colour);
-}
-
-/* 2) 열린 상태에서만 색 그라디언트 & 배지 채우기 */
+/* 열린 상태: 그라디언트 + 배지 채움(컬러 등장) */
+/* iOS 캐치-올: 먼저 단순 rgba 그라디언트로 fallback, 그 위에 color-mix */
 .trk-item.open .trk-hdr{
+  background:
+    linear-gradient(90deg, rgba(34,211,238,.25), rgba(59,130,246,.2)),
+    linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,0));
   background:
     linear-gradient(90deg,
       color-mix(in srgb, var(--a) 38%, transparent),
@@ -212,8 +170,7 @@ img{ max-width:100%; display:block; }
 }
 .trk-item.open .trk-no{
   background: color-mix(in srgb, var(--a) 40%, var(--b) 10%);
-  color:#fff;
-  border-color: transparent;
+  color:#fff; border-color: transparent;
 }
 .trk-item.open .trk-title{
   color: color-mix(in srgb, var(--b) 70%, #ffffff 20%);
@@ -222,24 +179,24 @@ img{ max-width:100%; display:block; }
   color: color-mix(in srgb, var(--a) 65%, #ffffff 20%);
 }
 
-/* 3) 본문 여백/행간 개선 + 왼쪽 바 제거 */
+/* 패널 – 스르륵 열림/닫힘 (JS로 max-height 제어) + 여백/행간 완화 */
 .trk-panel{
-  line-height: 1.75;                    /* 행간 넉넉하게 */
-  padding: 0 18px;                      /* 닫힘 상태 패딩 */
+  max-height:0; opacity:0; overflow:hidden;
+  padding:0 18px;                   /* 닫힘 상태 패딩 */
+  transition:max-height .35s ease, opacity .25s ease, padding .25s ease;
+  background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  line-height:1.75;                 /* 행간 넉넉하게 */
 }
-.trk-item.open .trk-panel{
-  padding: 16px 18px 18px;              /* 열렸을 때 패딩 */
-}
-.trk-inner{
-  padding: 0;                           /* 내부 패딩은 문단에서 처리 */
-  border-left: none !important;         /* 긴 왼쪽 바 제거 */
-}
+.trk-item.open .trk-panel{ opacity:1; padding:16px 18px 18px; }
+
+.trk-inner{ padding:0; border-left:none !important; } /* 왼쪽 긴 바 제거 */
 .trk-quote{
-  margin: 0 0 10px;
-  padding: 0;                           /* 인용문 좌측 바 제거 */
-  border-left: none !important;
-  opacity: .96;
+  margin:0 0 10px; padding:0; border-left:none !important; opacity:.96; /* 인용문 바 제거 */
 }
-.trk-panel p{
-  margin: 0 0 10px;                     /* 문단 간격 */
+.trk-panel p{ margin:0 0 10px; }    /* 문단 간격 */
+
+/* 모바일 */
+@media (max-width: 720px){
+  .trk-hdr{ grid-template-columns:44px 1fr auto; padding:14px 14px; }
+  .trk-no{ width:32px; height:32px; }
 }
