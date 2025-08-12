@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>band NATASHA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NATASHA — EP [열기]</title>
+
+<!-- =========================
+     Fonts (원하면 교체/삭제)
+========================= -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
+<!-- =========================
+     Styles (한 파일 구성)
+     - 색/타이포/레이아웃은 여기서만 수정
+========================= -->
 <style>
-/* ========== Base (Dark Theme) ========== */
 :root{
+  /* 색상 */
   --bg:#0b0c10; --fg:#eef0f2; --muted:#9aa3ad; --accent:#d1362d;
-  --card:#121419; --border:#1f2329; --wrap:1100px; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
+  --card:#121419; --border:#1f2329;
+  /* 레이아웃 */
+  --wrap:1100px; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
 }
+
+/* 기본 타이포/레이아웃 */
 *{box-sizing:border-box}
 html,body{height:100%}
 html{scroll-behavior:smooth}
@@ -21,21 +33,21 @@ body{
   line-height:1.6; letter-spacing:.01em;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-img{max-width:100%;display:block}
-.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
-.small{font-size:.9rem}.muted{color:var(--muted)}
-.section{padding:72px 0;border-top:1px solid var(--border);scroll-margin-top:76px}
-.section-title{margin:0 0 18px;font-family:"Bebas Neue";font-size:clamp(28px,5vw,40px);letter-spacing:.05em}
+img{display:block; max-width:100%}
+.wrap{width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:20px}
+.section{padding:72px 0; border-top:1px solid var(--border); scroll-margin-top:76px}
+.section-title{margin:0 0 18px; font-family:"Bebas Neue"; font-size:clamp(28px,5vw,40px); letter-spacing:.05em}
+.small{font-size:.9rem} .muted{color:var(--muted)}
 
-/* ========== Header ========== */
-.site-header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(140%) blur(8px);background:rgba(11,12,16,.6);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:18px;min-height:60px}
-.brand{font-family:"Bebas Neue";font-size:26px;letter-spacing:.08em;color:#fff;text-decoration:none}
-.nav-links{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
-.nav-links a{color:var(--muted);text-decoration:none;font-weight:500}
+/* 상단 네비 */
+.site-header{position:sticky; top:0; z-index:100; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,12,16,.6); border-bottom:1px solid var(--border)}
+.nav{display:flex; align-items:center; gap:18px; min-height:60px}
+.brand{font-family:"Bebas Neue"; font-size:26px; letter-spacing:.08em; color:#fff; text-decoration:none}
+.nav-links{margin-left:auto; display:flex; gap:16px; flex-wrap:wrap}
+.nav-links a{color:var(--muted); text-decoration:none; font-weight:500}
 .nav-links a:hover{color:var(--fg)}
 
-/* ========== Hero ========== */
+/* 히어로 */
 .hero{
   min-height:92vh; display:grid; place-items:center; position:relative; overflow:hidden;
   background:
@@ -45,67 +57,78 @@ img{max-width:100%;display:block}
     var(--bg);
 }
 .hero-content{padding-block:80px}
-.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin:0 0 6px;font-size:.9rem}
-.hero h1{margin:0 0 10px;font-family:"Bebas Neue";font-size:clamp(48px,9vw,96px);letter-spacing:.04em;line-height:.95}
+.kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.18em; margin:0 0 6px; font-size:.9rem}
+.hero h1{margin:0 0 10px; font-family:"Bebas Neue"; font-size: clamp(48px, 9vw, 96px); letter-spacing:.04em; line-height:.95}
 .hero .accent{color:var(--accent)}
-.lead{margin:0 0 24px;max-width:60ch;opacity:.95}
-.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid var(--border);background:#151821;color:#fff;text-decoration:none;font-weight:700;transition:.18s}
-.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.btn-primary{background:var(--accent);border-color:transparent}
+.lead{margin:0 0 24px; max-width:60ch; opacity:.95}
 
-/* ========== Team / Images ========== */
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
-.band-hero{margin:0 0 18px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
-.band-hero>img{width:100%;height:auto;max-height:70vh;object-fit:contain;background:#000;filter:grayscale(100%);transition:filter .35s}
+/* 버튼 */
+.btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid var(--border); background:#151821; color:#fff; text-decoration:none; font-weight:700; transition:.18s}
+.btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+.btn-primary{background:var(--accent); border-color:transparent}
+
+/* 카드/그리드 */
+.grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+
+/* 팀/사진 */
+.band-hero{margin:0 0 18px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border)}
+.band-hero>img{width:100%; height:auto; max-height:70vh; object-fit:contain; background:#000; filter:grayscale(100%); transition:filter .35s}
 .band-hero:hover>img{filter:grayscale(0%)}
-.members .member{padding:0;overflow:hidden}
-.member img{width:100%;height:300px;object-fit:cover;border-bottom:1px solid var(--border);filter:grayscale(100%);transform:scale(1.0);transition:filter .35s,transform .35s;border-radius:8px}
-.member:hover img{filter:grayscale(0%);transform:scale(1.04)}
-.member .meta{padding:14px 16px;display:flex;flex-direction:column;gap:4px}
-.member .role{color:var(--muted);font-size:.9rem}
+.members .member{padding:0; overflow:hidden}
+.member img{width:100%; height:300px; object-fit:cover; border-bottom:1px solid var(--border); filter:grayscale(100%); transform:scale(1.0); transition:filter .35s, transform .35s; border-radius:8px}
+.member:hover img{filter:grayscale(0%); transform:scale(1.04)}
+.member .meta{padding:14px 16px; display:flex; flex-direction:column; gap:4px}
+.member .role{color:var(--muted); font-size:.9rem}
 
-/* ========== Lists / Footer ========== */
-.bullets{margin:0;padding-left:18px;color:var(--fg)} .bullets li{margin:8px 0}
-.footer{padding:60px 0 80px;border-top:1px solid var(--border)}
+/* 보상/푸터 */
+.bullets{margin:0; padding-left:18px} .bullets li{margin:8px 0}
+.footer{padding:60px 0 80px; border-top:1px solid var(--border)}
 
-/* ========== Tracks (Accordion) ========== */
-/* 제목바/카드 기본 */
-#trkAccordion{display:grid;gap:12px}
-#trkAccordion .trk-item{border:1px solid var(--border);border-radius:var(--radius);background:var(--card);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+/* 트랙 아코디언 (닫힘: 어두운 카드 / 열림: 강조+슬라이드) */
+#trkAccordion{display:grid; gap:12px}
+#trkAccordion .trk-item{border:1px solid var(--border); border-radius:var(--radius); background:var(--card); overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.18); transition:background-color .28s ease}
+#trkAccordion .trk-item.open{background-color:rgba(255,255,255,.06)} /* 열릴 때 카드 강조 */
 #trkAccordion .trk-hdr{
-  all:unset;display:grid;width:100%;
-  grid-template-columns:52px 1fr auto;align-items:center;gap:12px;
-  cursor:pointer;user-select:none;padding:16px;background:#151821;border-bottom:1px solid var(--border)
+  all:unset; display:grid; width:100%;
+  grid-template-columns:52px 1fr auto; align-items:center; gap:12px;
+  cursor:pointer; user-select:none; padding:16px; background:#151821; border-bottom:1px solid var(--border)
 }
 #trkAccordion .trk-hdr:hover{filter:brightness(1.06)}
-#trkAccordion .trk-no{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:10px;font-weight:800;color:var(--fg);background:transparent}
-#trkAccordion .trk-title{font-weight:800;letter-spacing:.01em;color:var(--fg)}
-#trkAccordion .trk-caret{color:var(--muted);transition:transform .2s;font-size:18px}
-/* 열린 제목바(그라디언트) */
-#trkAccordion .trk-item.open .trk-hdr{background:linear-gradient(90deg,var(--a) 0%,var(--b) 100%)}
-#trkAccordion .trk-item.open .trk-no{background:var(--a);color:#fff;border-color:transparent}
-#trkAccordion .trk-item.open .trk-title,#trkAccordion .trk-item.open .trk-caret{color:#fff}
+#trkAccordion .trk-no{width:36px; height:36px; display:grid; place-items:center; border:1px solid var(--border); border-radius:10px; font-weight:800; color:var(--fg); background:transparent}
+#trkAccordion .trk-title{font-weight:800; letter-spacing:.01em; color:var(--fg)}
+#trkAccordion .trk-caret{color:var(--muted); transition:transform .2s; font-size:18px}
 #trkAccordion .trk-item.open .trk-caret{transform:rotate(180deg)}
-/* 패널: display 토글(외부 충돌 회피) */
-#trkAccordion .trk-panel{display:none}
-#trkAccordion .trk-item.open .trk-panel{display:block}
-#trkAccordion .trk-panel{padding:0 18px;background:linear-gradient(0deg,rgba(255,255,255,.02),rgba(255,255,255,0))}
-#trkAccordion .trk-inner{padding:16px 0 18px;border-left:none}
-#trkAccordion .trk-lyric{margin:0;line-height:1.8;letter-spacing:.01em}
-#trkAccordion .trk-panel p+p{margin-top:10px}
+/* 열렸을 때 헤더에 살짝 컬러 그라디언트(트랙별 --a/--b 컬러 사용) */
+#trkAccordion .trk-item.open .trk-hdr{background:linear-gradient(90deg, var(--a, #22d3ee) 0%, var(--b, #3b82f6) 100%)}
 
-/* ========== Responsive ========== */
+/* 패널: 부드러운 슬라이드(중요: display 대신 max-height 사용) */
+#trkAccordion .trk-panel{
+  max-height:0; opacity:0; overflow:hidden;
+  padding:0 18px; /* 닫힐 때 패딩 최소 */
+  transition:max-height .35s ease, opacity .25s ease, padding .25s ease;
+  background:linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+}
+#trkAccordion .trk-item.open .trk-panel{opacity:1; padding:16px 18px 18px}
+#trkAccordion .trk-inner{padding:0; border-left:none}
+#trkAccordion .trk-lyric{margin:0; line-height:1.8; letter-spacing:.01em}
+#trkAccordion .trk-panel p + p{margin-top:10px}
+
+/* 반응형 */
 @media (max-width:720px){
   .nav-links{display:none}
   .hero-content{padding-block:64px}
   .lead{max-width:48ch}
-  #trkAccordion .trk-hdr{grid-template-columns:44px 1fr auto;padding:14px}
-  #trkAccordion .trk-no{width:32px;height:32px}
+  #trkAccordion .trk-hdr{grid-template-columns:44px 1fr auto; padding:14px}
+  #trkAccordion .trk-no{width:32px; height:32px}
 }
 </style>
 </head>
 <body>
+
+<!-- =========================
+     Header
+========================= -->
 <header class="site-header">
   <nav class="nav wrap">
     <a class="brand" href="#hero">NATASHA</a>
@@ -119,18 +142,28 @@ img{max-width:100%;display:block}
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- =========================
+     Hero
+========================= -->
 <section id="hero" class="hero">
   <div class="hero-content wrap">
     <p class="kicker">EP • 열기</p>
     <h1>나타샤 EP <span class="accent">[열기]</span></h1>
-    <p class="lead">한 해는 네 개의 계절, 열두 개의 달로 나뉘고, 그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다. 나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.</p>
-    <div class="hero-cta"><a class="btn btn-primary" href="#listen">음악 감상하기</a></div>
+    <p class="lead">
+      한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
+      그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
+      나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#listen">음악 감상하기</a>
+    </div>
   </div>
 </section>
 
 <main>
-  <!-- ABOUT -->
+  <!-- =========================
+       About
+  ========================= -->
   <section id="about" class="section">
     <div class="wrap">
       <h2 class="section-title">EP 소개</h2>
@@ -142,7 +175,9 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <!-- TRACKS -->
+  <!-- =========================
+       Tracks (아코디언)
+  ========================= -->
   <section id="tracks" class="section">
     <div class="wrap">
       <h2 class="section-title">곡 소개</h2>
@@ -151,7 +186,9 @@ img{max-width:100%;display:block}
         <!-- 01 탓 -->
         <div class="trk-item" style="--a:#22d3ee; --b:#3b82f6;">
           <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">01</span><span class="trk-title">탓</span><span class="trk-caret">▾</span>
+            <span class="trk-no">01</span>
+            <span class="trk-title">탓</span>
+            <span class="trk-caret">▾</span>
           </button>
           <div class="trk-panel"><div class="trk-inner">
             <p class="trk-lyric">“그래서 널 위해 죽을 수 있냐면<br>뭐 그렇게까진 아냐”</p>
@@ -161,7 +198,9 @@ img{max-width:100%;display:block}
         <!-- 02 불가해 -->
         <div class="trk-item" style="--a:#6366f1; --b:#9333ea;">
           <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">02</span><span class="trk-title">불가해</span><span class="trk-caret">▾</span>
+            <span class="trk-no">02</span>
+            <span class="trk-title">불가해</span>
+            <span class="trk-caret">▾</span>
           </button>
           <div class="trk-panel"><div class="trk-inner">
             <p class="trk-lyric">“언젠간 너도 알게 되겠지<br>차갑기만한 눈길로는<br>이해못할 하루를 살아갈 수 없다는 걸”</p>
@@ -171,7 +210,9 @@ img{max-width:100%;display:block}
         <!-- 03 가시밭길 -->
         <div class="trk-item" style="--a:#0ea5e9; --b:#0f766e;">
           <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">03</span><span class="trk-title">가시밭길</span><span class="trk-caret">▾</span>
+            <span class="trk-no">03</span>
+            <span class="trk-title">가시밭길</span>
+            <span class="trk-caret">▾</span>
           </button>
           <div class="trk-panel"><div class="trk-inner">
             <p class="trk-lyric">“어제의 나는 무슨 망상을 했을까<br>오늘의 나를 기대하고 있었던 걸까”</p>
@@ -181,46 +222,56 @@ img{max-width:100%;display:block}
         <!-- 04 열기 -->
         <div class="trk-item" style="--a:#f97316; --b:#ef4444;">
           <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">04</span><span class="trk-title">열기</span><span class="trk-caret">▾</span>
+            <span class="trk-no">04</span>
+            <span class="trk-title">열기</span>
+            <span class="trk-caret">▾</span>
           </button>
           <div class="trk-panel"><div class="trk-inner">
             <p class="trk-lyric">“계절 끝에 숨은 우리의 약속들을<br>언젠가 모두 다 잊어버린다 해도”</p>
           </div></div>
         </div>
       </div>
-
-      <script>
-      // 최소 충돌 토글: 애니메이션 없이 display만 토글 (확실한 동작)
-      (function(){
-        const items=[...document.querySelectorAll('#trkAccordion .trk-item')];
-        items.forEach(it=>{
-          const btn=it.querySelector('.trk-hdr');
-          btn.onclick=()=>{
-            const was=it.classList.contains('open');
-            items.forEach(o=>o.classList.remove('open'));
-            if(!was) it.classList.add('open');
-          };
-        });
-      })();
-      </script>
     </div>
   </section>
 
-  <!-- TEAM -->
+  <!-- =========================
+       Team (이미지 경로 유지)
+  ========================= -->
   <section id="team" class="section">
     <div class="wrap">
       <h2 class="section-title">프로젝트 팀 소개</h2>
-      <figure class="band-hero"><img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy"></figure>
+
+      <figure class="band-hero">
+        <img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy">
+      </figure>
+
       <div class="grid members">
-        <article class="member card"><img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy" /><div class="meta"><span class="role">Drums</span><strong>민태준</strong></div></article>
-        <article class="member card"><img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy" /><div class="meta"><span class="role">Guitar</span><strong>구현우</strong></div></article>
-        <article class="member card"><img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy" /><div class="meta"><span class="role">Bass</span><strong>윤병준</strong></div></article>
-        <article class="member card"><img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy" /><div class="meta"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div></article>
+        <article class="member card">
+          <img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy">
+          <div class="meta"><span class="role">Drums</span><strong>민태준</strong></div>
+        </article>
+
+        <article class="member card">
+          <img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy">
+          <div class="meta"><span class="role">Guitar</span><strong>구현우</strong></div>
+        </article>
+
+        <article class="member card">
+          <img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy">
+          <div class="meta"><span class="role">Bass</span><strong>윤병준</strong></div>
+        </article>
+
+        <article class="member card">
+          <img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy">
+          <div class="meta"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- REWARDS -->
+  <!-- =========================
+       Rewards
+  ========================= -->
   <section id="rewards" class="section">
     <div class="wrap">
       <h2 class="section-title">선물 설명</h2>
@@ -233,7 +284,9 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <!-- LISTEN -->
+  <!-- =========================
+       Listen / SNS
+  ========================= -->
   <section id="listen" class="section">
     <div class="wrap">
       <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
@@ -247,6 +300,102 @@ img{max-width:100%;display:block}
   </section>
 </main>
 
-<footer class="footer"><div class="wrap small muted">© 2025 Natasha. All rights reserved.</div></footer>
+<!-- =========================
+     Footer
+========================= -->
+<footer class="footer">
+  <div class="wrap small muted">© 2025 Natasha. All rights reserved.</div>
+</footer>
+
+<!-- =========================
+     Scripts (한 파일 구성)
+     - 트랙 아코디언: 부드러운 열림/닫힘 + 하나만 열림
+========================= -->
+<script>
+(function(){
+  // 중복 초기화 방지
+  if (window.__natasha_trk_init__) return;
+  window.__natasha_trk_init__ = true;
+
+  const items = [...document.querySelectorAll('#trkAccordion .trk-item')];
+  if (!items.length) return;
+
+  // 초기 상태: 모두 닫힘
+  items.forEach(it=>{
+    const panel = it.querySelector('.trk-panel');
+    panel.style.maxHeight = '0px';
+    panel.style.overflow  = 'hidden';
+  });
+
+  const openItem = (it)=>{
+    if (it.classList.contains('open')) return;
+    const panel = it.querySelector('.trk-panel');
+    const btn   = it.querySelector('.trk-hdr');
+
+    panel.style.overflow  = 'hidden';
+    panel.style.maxHeight = '0px';
+    btn.setAttribute('aria-expanded','true');
+    it.classList.add('open');
+
+    // 스타일 적용 후 높이 측정 (2 RAF로 안정화)
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        const h = panel.scrollHeight;
+        panel.style.maxHeight = h + 'px';
+      });
+    });
+
+    // 전환 끝나면 auto로 풀어 내용 변화 대응
+    const onEnd = (e)=>{
+      if (e.propertyName !== 'max-height') return;
+      if (it.classList.contains('open')) {
+        panel.style.maxHeight = 'none';
+        panel.style.overflow  = 'visible';
+      }
+      panel.removeEventListener('transitionend', onEnd);
+    };
+    panel.addEventListener('transitionend', onEnd);
+  };
+
+  const closeItem = (it)=>{
+    if (!it.classList.contains('open')) return;
+    const panel = it.querySelector('.trk-panel');
+    const btn   = it.querySelector('.trk-hdr');
+    btn.setAttribute('aria-expanded','false');
+
+    // auto였다면 현재 높이를 수치로 고정 후 0으로
+    if (panel.style.maxHeight === 'none' || getComputedStyle(panel).maxHeight === 'none') {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      void panel.offsetHeight; // reflow
+    }
+    it.classList.remove('open');
+    panel.style.overflow  = 'hidden';
+    panel.style.maxHeight = '0px';
+  };
+
+  // 클릭 바인딩: 하나만 열리도록
+  items.forEach(it=>{
+    const btn = it.querySelector('.trk-hdr');
+    btn.addEventListener('click', ()=>{
+      const was = it.classList.contains('open');
+      items.forEach(o => closeItem(o));
+      if (!was) openItem(it);
+    });
+  });
+
+  // 리사이즈/폰트 로드 시 열린 항목 보정
+  const recalc = ()=>{
+    const open = document.querySelector('#trkAccordion .trk-item.open .trk-panel');
+    if (!open) return;
+    open.style.maxHeight = 'none';
+    const h = open.scrollHeight;
+    open.style.maxHeight = h + 'px';
+    requestAnimationFrame(()=>{ open.style.maxHeight = 'none'; });
+  };
+  window.addEventListener('resize', recalc);
+  if (document.fonts?.ready) document.fonts.ready.then(recalc).catch(()=>{});
+})();
+</script>
+
 </body>
 </html>
