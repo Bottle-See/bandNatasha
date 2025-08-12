@@ -102,12 +102,18 @@ img{ max-width:100%; display:block; }
   overflow: hidden;
   border: 1px solid var(--border);
 }
+
 .band-hero img{
   width: 100%;
   display: block;
-  aspect-ratio: 16 / 9;        /* 단체 사진 비율 고정 */
-  object-fit: cover;
-  filter: contrast(1.02) saturate(1.02);
+  object-fit: contain; /* 이미지 전체 보이게 */
+  background-color: #000; /* 여백이 생길 경우 배경색 */
+  filter: grayscale(100%);
+  transition: filter .35s ease;
+}
+
+.band-hero:hover img{
+  filter: grayscale(0%);
 }
 
 .members { align-items: stretch; }
