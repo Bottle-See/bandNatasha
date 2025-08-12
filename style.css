@@ -185,3 +185,52 @@ img{ max-width:100%; display:block; }
   .trk-hdr{ grid-template-columns:44px 1fr auto; padding:14px 14px; }
   .trk-no{ width:32px; height:32px; }
 }
+/* ===== TRACKS OVERRIDE (force apply) ===== */
+
+/* 닫힘: 검은 카드 */
+.trk-hdr{
+  background:#151821 !important;
+  border-bottom:1px solid var(--border) !important;
+}
+.trk-no{
+  background:transparent !important;
+  color:var(--fg-colour) !important;
+  border:1px solid var(--border) !important;
+  box-shadow:none !important;
+}
+.trk-title{ color:var(--fg-colour) !important; }
+.trk-caret{ color:var(--muted-colour) !important; }
+
+/* 열림: 그라디언트 + 배지 컬러 */
+.trk-item.open .trk-hdr{
+  background: linear-gradient(90deg, var(--a) 0%, var(--b) 100%) !important;
+}
+.trk-item.open .trk-no{
+  background: var(--a) !important;
+  color:#fff !important;
+  border-color: transparent !important;
+}
+.trk-item.open .trk-title,
+.trk-item.open .trk-caret{ color:#fff !important; }
+.trk-item.open .trk-caret{ transform: rotate(180deg) !important; }
+
+/* 패널: 여백/행간 넉넉 + 왼쪽 바 제거 */
+.trk-panel{
+  line-height:1.75 !important;
+  padding:0 18px !important;           /* 닫힘 상태 */
+  max-height:0 !important;
+  opacity:0 !important;
+  overflow:hidden !important;
+}
+.trk-item.open .trk-panel{
+  padding:16px 18px 18px !important;   /* 열렸을 때 */
+  opacity:1 !important;
+}
+.trk-inner{ padding:0 !important; border-left:none !important; }
+.trk-quote, .trk-lyric{
+  margin:0 0 10px !important;
+  padding:0 !important;
+  border-left:none !important;
+  letter-spacing:.01em !important;
+}
+.trk-panel p{ margin:0 0 10px !important; }
