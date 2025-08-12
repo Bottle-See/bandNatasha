@@ -95,49 +95,38 @@ img{ max-width:100%; display:block; }
   .hero-content{ padding-block:64px; }
   .lead{ max-width: 48ch; }
 }
-/* ========== Team ========== */
-.band-hero{
+/* ===== 멤버 & 단체 사진 스타일 ===== */
+
+/* 공통 이미지 스타일 */
+.member img,
+.band-hero > img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;               /* 세로 최대 높이 제한 */
+  object-fit: contain !important; /* 사진 전체가 보이게 */
+  object-position: center;
+  background: #000;                /* 여백 배경색 */
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  filter: grayscale(100%);
+  transition: filter 0.35s ease;
+}
+
+/* 호버 시 흑백 → 컬러 */
+.member img:hover,
+.band-hero:hover > img {
+  filter: grayscale(0%);
+}
+
+/* 단체 사진 전용 래퍼 */
+.band-hero {
   margin: 0 0 18px 0;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
 }
 
-.band-hero img{
-  width: 100%;
-  display: block;
-  object-fit: contain; /* 이미지 전체 보이게 */
-  background-color: #000; /* 여백이 생길 경우 배경색 */
-  filter: grayscale(100%);
-  transition: filter .35s ease;
+/* 멤버 개별 사진 래퍼 */
+.member {
+  margin-bottom: 18px;
 }
-
-.band-hero:hover img{
-  filter: grayscale(0%);
-}
-
-.members { align-items: stretch; }
-.member { padding: 0; overflow: hidden; }
-.member img{
-  width: 100%;
-  height: 300px;               /* 원하는 높이로 조절 가능(예: 280~340px) */
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--border);
-
-  /* 효과 */
-  filter: grayscale(100%);
-  transform: scale(1.0);
-  transition: filter .35s ease, transform .35s ease;
-}
-.member:hover img{
-  filter: grayscale(0%);
-  transform: scale(1.04);
-}
-
-.member .meta{
-  padding: 14px 16px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.member .role{ color: var(--muted-colour); font-size: .9rem; }
-.member strong{ font-size: 1.05rem; letter-spacing: .01em; }
