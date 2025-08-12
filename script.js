@@ -17,66 +17,49 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(el);
   });
 });
-// Tracks: only one open at a time
+
+// Tracks accordion: slide open/close, only one open at a time
 document.addEventListener('DOMContentLoaded', () => {
-  const groups = document.querySelectorAll('#tracklist .track');
-  groups.forEach(d => {
-    d.addEventListener('toggle', () => {
-      if (d.open) {
-        groups.forEach(o => { if (o !== d) o.open = false; });
-      }
-    });
-  });
-});
-// Accordion slide open/close (only one open)
-document.addEventListener('DOMContentLoaded', () => {
-  const items = [...document.querySelectorAll('#tracksAccordion .acc-item')];
+  const items = [...document.querySelectorAll('#trkAccordion .trk-item')];
 
   const closeItem = (it) => {
     if (!it.classList.contains('open')) return;
-    const panel = it.querySelector('.acc-panel');
-    const header = it.querySelector('.acc-header');
-    header.setAttribute('aria-expanded', 'false');
-    // animate to 0
-    panel.style.maxHeight = panel.scrollHeight + 'px'; // set current height first
-    requestAnimationFrame(() => {
-      panel.style.maxHeight = '0px';
-    });
+    const panel = it.querySelector('.trk-panel');
+    const hdr = it.querySelector('.trk-hdr');
+    hdr.setAttribute('aria-expanded', 'false');
+    // set current height then animate to 0
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    requestAnimationFrame(() => { panel.style.maxHeight = '0px'; });
     it.classList.remove('open');
   };
 
   const openItem = (it) => {
     if (it.classList.contains('open')) return;
-    const panel = it.querySelector('.acc-panel');
-    const header = it.querySelector('.acc-header');
-    header.setAttribute('aria-expanded', 'true');
+    const panel = it.querySelector('.trk-panel');
+    const hdr = it.querySelector('.trk-hdr');
+    hdr.setAttribute('aria-expanded', 'true');
     it.classList.add('open');
-    // set to content height for smooth slide
     panel.style.maxHeight = panel.scrollHeight + 'px';
   };
 
+  // init closed
   items.forEach(it => {
-    const header = it.querySelector('.acc-header');
-    const panel = it.querySelector('.acc-panel');
-
-    // ensure start closed
+    const panel = it.querySelector('.trk-panel');
+    const hdr = it.querySelector('.trk-hdr');
     it.classList.remove('open');
-    header.setAttribute('aria-expanded', 'false');
+    hdr.setAttribute('aria-expanded', 'false');
     panel.style.maxHeight = '0px';
 
-    header.addEventListener('click', () => {
-      const isOpen = it.classList.contains('open');
-      // close others
+    hdr.addEventListener('click', () => {
+      const wasOpen = it.classList.contains('open');
       items.forEach(o => { if (o !== it) closeItem(o); });
-      // toggle current
-      if (isOpen) closeItem(it);
-      else openItem(it);
+      if (wasOpen) closeItem(it); else openItem(it);
     });
   });
 
-  // Recompute height on resize for the open one
+  // keep height on resize for open one
   window.addEventListener('resize', () => {
-    const current = document.querySelector('#tracksAccordion .acc-item.open .acc-panel');
-    if (current) current.style.maxHeight = current.scrollHeight + 'px';
+    const openPanel = document.querySelector('#trkAccordion .trk-item.open .trk-panel');
+    if (openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + 'px';
   });
 });
