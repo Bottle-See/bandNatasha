@@ -95,3 +95,26 @@ img{ max-width:100%; display:block; }
   .hero-content{ padding-block:64px; }
   .lead{ max-width: 48ch; }
 }
+/* 멤버 사진 스타일 */
+.member.card img {
+  width: 100%;
+  height: 300px; /* 원하는 높이로 조정 가능 */
+  object-fit: cover;
+  border-radius: 8px;
+  filter: grayscale(100%);
+  transition: all 0.4s ease;
+}
+
+/* 마우스 올렸을 때 효과 */
+.member.card img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* 단체 사진 스타일 */
+.band-hero img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
