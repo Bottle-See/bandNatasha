@@ -1,9 +1,11 @@
-/* Natasha EP [열기] – Clean, readable landing */
+/* =========================
+   Natasha EP [열기] – Clean dark theme
+========================= */
 :root{
   --bg-colour:#0b0c10;
   --fg-colour:#eef0f2;
   --muted-colour:#9aa3ad;
-  --accent-colour:#d1362d;  /* brand red */
+  --accent-colour:#d1362d;   /* brand red */
   --card-bg:#121419;
   --border:#1f2329;
   --wrap: 1100px;
@@ -11,36 +13,46 @@
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
+/* ===== Base ===== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+html{ scroll-behavior:smooth; }           /* 부드러운 스크롤 */
 body{
   margin:0;
   background:var(--bg-colour);
   color:var(--fg-colour);
   font-family:"Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  line-height:1.6;
-  letter-spacing:.01em;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  line-height:1.6; letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 img{ max-width:100%; display:block; }
 .wrap{ width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:20px; }
-.small{ font-size:.9rem; }
-.muted{ color:var(--muted-colour); }
+.small{ font-size:.9rem; } .muted{ color:var(--muted-colour); }
+.section{ padding:72px 0; border-top:1px solid var(--border); scroll-margin-top:76px; }
+.section-title{
+  margin:0 0 18px;
+  font-family:"Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing:.05em;
+}
 
-/* Header */
-.site-header{ position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,12,16,.6); border-bottom:1px solid var(--border); }
+/* ===== Header ===== */
+.site-header{ position:sticky; top:0; z-index:40;
+  backdrop-filter:saturate(140%) blur(8px);
+  background:rgba(11,12,16,.6);
+  border-bottom:1px solid var(--border);
+}
 .nav{ display:flex; align-items:center; gap:18px; min-height:60px; }
-.brand{ font-family:"Bebas Neue", system-ui, sans-serif; font-size:26px; letter-spacing:.08em; color:#fff; text-decoration:none; }
+.brand{ font-family:"Bebas Neue"; font-size:26px; letter-spacing:.08em; color:#fff; text-decoration:none; }
 .nav-links{ margin-left:auto; display:flex; gap:16px; flex-wrap:wrap; }
 .nav-links a{ color:var(--muted-colour); text-decoration:none; font-weight:500; }
 .nav-links a:hover{ color:var(--fg-colour); }
 
-/* Hero */
+/* ===== Hero ===== */
 .hero{
   min-height:92vh; display:grid; place-items:center; position:relative; overflow:hidden;
   background:
-    linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.58)),   /* 어둡게 조절: .58 숫자 ↑↓ */
+    linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.58)),    /* 어둡게 조절: .58 값 */
     url("./hero-logo.png") center/contain no-repeat,
     radial-gradient(1200px 600px at 70% 20%, rgba(255,255,255,.06), transparent),
     var(--bg-colour);
@@ -54,103 +66,71 @@ img{ max-width:100%; display:block; }
   letter-spacing:.04em; line-height:0.95;
 }
 .hero h1 .accent{ color:var(--accent-colour); }
-.lead{
-  margin:0 0 24px; max-width: 60ch; color: var(--fg-colour); opacity:.95;
-}
+.lead{ margin:0 0 24px; max-width: 60ch; color: var(--fg-colour); opacity:.95; }
 
-/* Buttons */
-.btn{ display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid var(--border); background:#151821; color:#fff; text-decoration:none; font-weight:700; transition:.18s ease; }
+/* ===== Buttons ===== */
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:12px;
+  border:1px solid var(--border); background:#151821; color:#fff;
+  text-decoration:none; font-weight:700; transition:.18s ease;
+}
 .btn:hover{ transform: translateY(-1px); box-shadow:var(--shadow); }
 .btn-primary{ background:var(--accent-colour); border-color: transparent; }
 .btn-primary:hover{ filter:brightness(1.05); }
 
-.section{ padding:72px 0; border-top:1px solid var(--border); }
-.section-title{ margin:0 0 18px; font-family:"Bebas Neue", system-ui, sans-serif; font-size: clamp(28px, 5vw, 40px); letter-spacing:.05em; }
-
-/* Cards / grid */
+/* ===== Cards/Grid ===== */
 .grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .card{ background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow: 0 1px 0 rgba(255,255,255,.03) inset; }
-.cards .card h3{ font-family:"Bebas Neue", system-ui, sans-serif; letter-spacing:.03em; margin:2px 0 10px; font-size:24px; }
 
-/* Timeline */
-.timeline{ list-style:none; padding:0; margin:0; border-left:2px solid var(--border); }
-.timeline li{ padding:10px 0 10px 16px; position:relative; }
-.timeline li::before{ content:""; position:absolute; width:10px; height:10px; border-radius:50%; left:-6px; top:18px; background:var(--accent-colour); box-shadow:0 0 0 3px rgba(209,54,45,.25); }
-.timeline time{ font-weight:700; color:#fff; margin-right:8px; }
-.timeline span{ color:var(--muted-colour); }
 
-/* Team */
-.members .member{ display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
-.member .role{ color:var(--muted-colour); font-size:.9rem; }
+/* ===== Team ===== */
+/* 단체 사진: 전체 보이기 + 흑백→컬러 */
+.band-hero{
+  margin: 0 0 18px 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+}
+.band-hero > img{
+  width: 100%; height: auto; max-height: 70vh;
+  object-fit: contain !important; object-position:center;
+  background:#000; filter: grayscale(100%); transition: filter .35s ease;
+  border-radius: var(--radius); border:1px solid var(--border);
+}
+.band-hero:hover > img{ filter: grayscale(0%); }
 
-/* Bullets */
+/* 멤버 카드: 고정 높이 + 흑백→컬러 */
+.members { align-items: stretch; }
+.member { padding: 0; overflow: hidden; }
+.member img{
+  width: 100%; height: 300px; object-fit: cover; display: block;
+  border-bottom: 1px solid var(--border);
+  filter: grayscale(100%); transform: scale(1.0);
+  transition: filter .35s ease, transform .35s ease;
+  border-radius: 8px;
+}
+.member:hover img{ filter: grayscale(0%); transform: scale(1.04); }
+.member .meta{ padding: 14px 16px; display:flex; flex-direction:column; gap:4px; }
+.member .role{ color: var(--muted-colour); font-size: .9rem; }
+.member strong{ font-size: 1.05rem; letter-spacing: .01em; }
+
+/* ===== Bullets ===== */
 .bullets{ margin:0; padding-left:18px; color:var(--fg-colour); }
 .bullets li{ margin:8px 0; }
 
-/* Footer */
+/* ===== Footer ===== */
 .footer{ padding:60px 0 80px; border-top:1px solid var(--border); }
 
-@media (max-width: 720px){
-  .nav-links{ display:none; }
-  .hero-content{ padding-block:64px; }
-  .lead{ max-width: 48ch; }
-}
-/* ===== 멤버 & 단체 사진 스타일 ===== */
-
-/* 공통 이미지 스타일 */
-.member img,
-.band-hero > img {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;               /* 세로 최대 높이 제한 */
-  object-fit: contain !important; /* 사진 전체가 보이게 */
-  object-position: center;
-  background: #000;                /* 여백 배경색 */
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  filter: grayscale(100%);
-  transition: filter 0.35s ease;
-}
-
-/* 호버 시 흑백 → 컬러 */
-.member img:hover,
-.band-hero:hover > img {
-  filter: grayscale(0%);
-}
-
-/* 단체 사진 전용 래퍼 */
-.band-hero {
-  margin: 0 0 18px 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-/* 멤버 개별 사진 래퍼 */
-.member {
-  margin-bottom: 18px;
-}
-
-/* ===== Tracks – Monsoon/Summer accordion ===== */
+/* ===== Tracks – Monsoon/Summer accordion (button+JS) ===== */
 .trk-accordion{ display:grid; gap:12px; }
-
 .trk-item{
-  --a: var(--accent-colour); /* start */
-  --b: #3b82f6;              /* end */
-  border:1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card-bg);
-  overflow:hidden;
+  --a: var(--accent-colour);   /* start colour */
+  --b: #3b82f6;                /* end colour  */
+  border:1px solid var(--border); border-radius: var(--radius);
+  background: var(--card-bg); overflow:hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,.18);
 }
-
-/* 제목바 – 장마 그라디언트 + 클릭 느낌 */
 .trk-hdr{
   all: unset; display:grid; width:100%;
-  grid-template-columns: 52px 1fr auto;
-  align-items:center; gap:12px;
-  cursor:pointer; user-select:none;
-  padding:16px 16px;
+  grid-template-columns:52px 1fr auto; align-items:center; gap:12px;
+  cursor:pointer; user-select:none; padding:16px 16px;
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--a) 30%, transparent), color-mix(in srgb, var(--b) 18%, transparent)),
     linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
@@ -173,38 +153,32 @@ img{ max-width:100%; display:block; }
 }
 .trk-caret{
   color: color-mix(in srgb, var(--a) 65%, #ffffff 20%);
-  transition: transform .25s ease;
-  font-size:18px;
+  transition: transform .25s ease; font-size:18px;
 }
+.trk-item.open .trk-caret{ transform: rotate(180deg); }
 
-/* 패널 – 스르륵 열림 */
+/* 패널 – 스르륵 열림/닫힘 (JS로 max-height 제어) */
 .trk-panel{
   max-height:0; opacity:0; overflow:hidden;
   padding:0 16px;
   transition:max-height .35s ease, opacity .25s ease, padding .25s ease;
   background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
 }
-.trk-inner{
-  padding:14px 0 16px;
-  border-left:3px solid color-mix(in srgb, var(--b) 70%, transparent);
-}
+.trk-item.open .trk-panel{ opacity:1; padding:12px 16px 16px; }
+
+/* 본문 */
+.trk-inner{ padding:0; border-left:3px solid color-mix(in srgb, var(--b) 70%, transparent); }
 .trk-quote{
-  margin:0 0 8px; padding-left:10px;
+  margin:12px 0 8px; padding-left:10px;
   border-left:3px solid color-mix(in srgb, var(--a) 70%, transparent);
   color:var(--fg-colour); opacity:.95;
 }
 
-/* 열린 상태 */
-.trk-item.open .trk-panel{ opacity:1; padding:12px 16px 16px; }
-.trk-item.open .trk-hdr{
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--a) 38%, transparent), color-mix(in srgb, var(--b) 28%, transparent)),
-    linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,0));
-}
-.trk-item.open .trk-caret{ transform: rotate(180deg); }
-
-/* 모바일 */
+/* ===== Responsive ===== */
 @media (max-width: 720px){
+  .nav-links{ display:none; }
+  .hero-content{ padding-block:64px; }
+  .lead{ max-width: 48ch; }
   .trk-hdr{ grid-template-columns:44px 1fr auto; padding:14px 14px; }
   .trk-no{ width:32px; height:32px; }
 }
