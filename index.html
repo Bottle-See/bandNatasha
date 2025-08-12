@@ -174,46 +174,81 @@
       </div>
 
       <!-- ▼ Tracks inline JS ▼ -->
-      <script>
-        (function(){
-          const items = Array.from(document.querySelectorAll('#trkAccordion .trk-item'));
+<script>
+(function(){
+  const items = Array.from(document.querySelectorAll('#trkAccordion .trk-item'));
 
-          function closeItem(it){
-            if(!it.classList.contains('open')) return;
-            const panel = it.querySelector('.trk-panel');
-            const btn   = it.querySelector('.trk-hdr');
-            btn.setAttribute('aria-expanded','false');
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-            requestAnimationFrame(()=>{ panel.style.maxHeight = '0px'; });
-            it.classList.remove('open');
-          }
+  function closeItem(it){
+    if(!it.classList.contains('open')) return;
+    const panel = it.querySelector('.trk-panel');
+    const btn   = it.querySelector('.trk-hdr');
+    btn.setAttribute('aria-expanded','false');
 
-          function openItem(it){
-            if(it.classList.contains('open')) return;
-            const panel = it.querySelector('.trk-panel');
-            const btn   = it.querySelector('.trk-hdr');
-            btn.setAttribute('aria-expanded','true');
-            it.classList.add('open');
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-          }
+    // 닫히기 전에 현재 높이에서 0으로 애니메이션
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    // auto 해둔 경우 대비
+    if (panel.style.maxHeight === 'none') {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+    requestAnimationFrame(()=>{ panel.style.maxHeight = '0px'; });
+    it.classList.remove('open');
+  }
 
-          items.forEach(it=>{
-            const btn = it.querySelector('.trk-hdr');
-            const panel = it.querySelector('.trk-panel');
-            panel.style.maxHeight = '0px';      // 초기 닫힘
-            btn.addEventListener('click', ()=>{
-              const wasOpen = it.classList.contains('open');
-              items.forEach(o=>{ if(o!==it) closeItem(o); });
-              if(wasOpen) closeItem(it); else openItem(it);
-            });
-          });
+  function openItem(it){
+    if(it.classList.contains('open')) return;
+    const panel = it.querySelector('.trk-panel');
+    const btn   = it.querySelector('.trk-hdr');
+    btn.setAttribute('aria-expanded','true');
 
-          window.addEventListener('resize', ()=>{
-            const openPanel = document.querySelector('#trkAccordion .trk-item.open .trk-panel');
-            if(openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + 'px';
-          });
-        })();
-      </script>
+    // 초기화
+    panel.style.maxHeight = '0px';
+    it.classList.add('open');
+
+    // 스타일(패딩, 폰트 등) 적용된 뒤 최종 높이 계산
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      });
+    });
+
+    // 전환 끝나면 auto로 전환해 내용이 길어져도 자연스럽게
+    panel.addEventListener('transitionend', function te(e){
+      if (e.propertyName === 'max-height' && it.classList.contains('open')) {
+        panel.style.maxHeight = 'none';
+      }
+      panel.removeEventListener('transitionend', te);
+    });
+  }
+
+  // init & bind
+  items.forEach(it=>{
+    const btn = it.querySelector('.trk-hdr');
+    const panel = it.querySelector('.trk-panel');
+    panel.style.maxHeight = '0px'; // 초기 닫힘
+
+    btn.addEventListener('click', ()=>{
+      const wasOpen = it.classList.contains('open');
+      items.forEach(o=>{ if(o!==it) closeItem(o); });
+      if(wasOpen) closeItem(it); else openItem(it);
+    });
+  });
+
+  // 리사이즈나 폰트 로드 후 열려있는 항목 높이 재계산
+  function recalcOpen(){
+    const openPanel = document.querySelector('#trkAccordion .trk-item.open .trk-panel');
+    if(openPanel){
+      openPanel.style.maxHeight = 'none';           // 일단 자동
+      const h = openPanel.scrollHeight;
+      openPanel.style.maxHeight = h + 'px';         // 숫자로 고정해 깜빡임 방지
+      requestAnimationFrame(()=>{ openPanel.style.maxHeight = 'none'; });
+    }
+  }
+  window.addEventListener('resize', recalcOpen);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(recalcOpen).catch(()=>{});
+  }
+})();
+</script>
       <!-- ▲ Tracks inline JS ▲ -->
     </section>
 
