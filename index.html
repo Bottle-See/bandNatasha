@@ -1,226 +1,194 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>band NATASHA</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-/* ===== Base ===== */
-:root{
-  --bg:#0b0c10; --fg:#eef0f2; --muted:#9aa3ad; --accent:#d1362d;
-  --card:#121419; --border:#1f2329; --wrap:1100px; --r:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box} html,body{height:100%} html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;letter-spacing:.01em}
-img{max-width:100%;display:block} .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
-.small{font-size:.9rem}.muted{color:var(--muted)} .section{padding:72px 0;border-top:1px solid var(--border);scroll-margin-top:76px}
-.section-title{margin:0 0 18px;font-family:"Bebas Neue";font-size:clamp(28px,5vw,40px);letter-spacing:.05em}
-
-/* ===== Header ===== */
-.site-header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(140%) blur(8px);background:rgba(11,12,16,.6);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:18px;min-height:60px}.brand{font-family:"Bebas Neue";font-size:26px;letter-spacing:.08em;color:#fff;text-decoration:none}
-.nav-links{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}.nav-links a{color:var(--muted);text-decoration:none;font-weight:500}.nav-links a:hover{color:var(--fg)}
-
-/* ===== Hero ===== */
-.hero{min-height:92vh;display:grid;place-items:center;position:relative;overflow:hidden;background:
-  linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.58)),
-  url("./hero-logo.png") center/contain no-repeat,
-  radial-gradient(1200px 600px at 70% 20%, rgba(255,255,255,.06), transparent),
-  var(--bg)}
-.hero-content{padding-block:80px}.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin:0 0 6px;font-size:.9rem}
-.hero h1{margin:0 0 10px;font-family:"Bebas Neue";font-size:clamp(48px,9vw,96px);letter-spacing:.04em;line-height:.95}
-.hero .accent{color:var(--accent)} .lead{margin:0 0 24px;max-width:60ch}
-.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid var(--border);background:#151821;color:#fff;text-decoration:none;font-weight:700;transition:.18s}
-.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)} .btn-primary{background:var(--accent);border-color:transparent}
-
-/* ===== Team ===== */
-.band-hero{margin:0 0 18px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
-.band-hero>img{width:100%;height:auto;max-height:70vh;object-fit:contain;background:#000;filter:grayscale(100%);transition:filter .35s}
-.band-hero:hover>img{filter:grayscale(0%)} .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px}
-.members .member{padding:0;overflow:hidden}
-.member img{width:100%;height:300px;object-fit:cover;border-bottom:1px solid var(--border);filter:grayscale(100%);transition:filter .35s,transform .35s;border-radius:8px}
-.member:hover img{filter:grayscale(0%);transform:scale(1.04)}
-.member .meta{padding:14px 16px;display:flex;flex-direction:column;gap:4px}.member .role{color:var(--muted);font-size:.9rem}
-
-/* ===== Rewards/List ===== */
-.bullets{margin:0;padding-left:18px}.bullets li{margin:8px 0}
-.footer{padding:60px 0 80px;border-top:1px solid var(--border)}
-
-/* ===== Tracks (inline accordion; closed=dark, open=gradient) ===== */
-#trkAccordion{display:grid;gap:12px}
-#trkAccordion .trk-item{border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-#trkAccordion .trk-hdr{all:unset;display:grid;width:100%;grid-template-columns:52px 1fr auto;align-items:center;gap:12px;cursor:pointer;user-select:none;padding:16px;background:#151821;border-bottom:1px solid var(--border)}
-#trkAccordion .trk-hdr:hover{filter:brightness(1.06)}
-#trkAccordion .trk-no{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:10px;font-weight:800;color:var(--fg);background:transparent}
-#trkAccordion .trk-title{font-weight:800;letter-spacing:.01em;color:var(--fg)} #trkAccordion .trk-caret{color:var(--muted);transition:transform .2s;font-size:18px}
-#trkAccordion .trk-item.open .trk-hdr{background:linear-gradient(90deg,var(--a) 0%,var(--b) 100%)} 
-#trkAccordion .trk-item.open .trk-no{background:var(--a);color:#fff;border-color:transparent}
-#trkAccordion .trk-item.open .trk-title,#trkAccordion .trk-item.open .trk-caret{color:#fff}
-#trkAccordion .trk-item.open .trk-caret{transform:rotate(180deg)}
-/* 전개부: 충돌 방지 위해 display 토글(!important) */
-#trkAccordion .trk-panel{display:none !important;padding:0 18px;background:linear-gradient(0deg,rgba(255,255,255,.02),rgba(255,255,255,0))}
-#trkAccordion .trk-item.open .trk-panel{display:block !important;padding:16px 18px 18px}
-#trkAccordion .trk-inner{padding:0;border-left:none} #trkAccordion .trk-lyric{margin:0;line-height:1.8;letter-spacing:.01em}
-#trkAccordion .trk-panel p+p{margin-top:10px}
-
-@media (max-width:720px){
-  .nav-links{display:none}
-  .hero-content{padding-block:64px}
-  .lead{max-width:48ch}
-  #trkAccordion .trk-hdr{grid-template-columns:44px 1fr auto;padding:14px}
-  #trkAccordion .trk-no{width:32px;height:32px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>band NATASHA</title>
+  <!-- 폰트 + 원래 디자인 CSS (버전 숫자 바꿔 캐시 무력화) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
-<header class="site-header">
-  <nav class="nav wrap">
-    <a class="brand" href="#hero">NATASHA</a>
-    <div class="nav-links">
-      <a href="#about">EP 소개</a>
-      <a href="#tracks">곡 소개</a>
-      <a href="#team">팀 소개</a>
-      <a href="#rewards">선물</a>
-      <a href="#listen">SNS</a>
-    </div>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a class="brand" href="#hero">NATASHA</a>
+      <div class="nav-links">
+        <a href="#about">EP 소개</a>
+        <a href="#tracks">곡 소개</a>
+        <a href="#team">팀 소개</a>
+        <a href="#rewards">선물</a>
+        <a href="#listen">SNS</a>
+      </div>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section id="hero" class="hero">
-  <div class="hero-content wrap">
-    <p class="kicker">EP • 열기</p>
-    <h1>나타샤 EP <span class="accent">[열기]</span></h1>
-    <p class="lead">
-      한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
-      그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
-      나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
-    </p>
-    <div class="hero-cta"><a class="btn btn-primary" href="#listen">음악 감상하기</a></div>
-  </div>
-</section>
-
-<main>
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="wrap">
-      <h2 class="section-title">EP 소개</h2>
-      <p class="muted">
-        안녕하세요. 4인조 얼터너티브 록 밴드 나타샤입니다.
-        2024년의 어느 날 시작된 우리의 여정은 어느덧 여기까지 닿았습니다.
-        사랑을 꾹꾹 눌러 담아 만든 작은 EP, <b>[열기]</b>를 세상에 전합니다.
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-content wrap">
+      <p class="kicker">EP • 열기</p>
+      <h1>나타샤 EP <span class="accent">[열기]</span></h1>
+      <p class="lead">
+        한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
+        그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
+        나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
       </p>
-    </div>
-  </section>
-
-  <!-- TRACKS (모두 index.html에 포함) -->
-  <section id="tracks" class="section">
-    <div class="wrap">
-      <h2 class="section-title">곡 소개</h2>
-
-      <div class="trk-accordion" id="trkAccordion">
-        <!-- 01 탓 -->
-        <div class="trk-item" style="--a:#22d3ee; --b:#3b82f6;">
-          <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">01</span><span class="trk-title">탓</span><span class="trk-caret">▾</span>
-          </button>
-          <div class="trk-panel"><div class="trk-inner">
-            <p class="trk-lyric">“그래서 널 위해 죽을 수 있냐면<br>뭐 그렇게까진 아냐”</p>
-          </div></div>
-        </div>
-
-        <!-- 02 불가해 -->
-        <div class="trk-item" style="--a:#6366f1; --b:#9333ea;">
-          <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">02</span><span class="trk-title">불가해</span><span class="trk-caret">▾</span>
-          </button>
-          <div class="trk-panel"><div class="trk-inner">
-            <p class="trk-lyric">“언젠간 너도 알게 되겠지<br>차갑기만한 눈길로는<br>이해못할 하루를 살아갈 수 없다는 걸”</p>
-          </div></div>
-        </div>
-
-        <!-- 03 가시밭길 -->
-        <div class="trk-item" style="--a:#0ea5e9; --b:#0f766e;">
-          <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">03</span><span class="trk-title">가시밭길</span><span class="trk-caret">▾</span>
-          </button>
-          <div class="trk-panel"><div class="trk-inner">
-            <p class="trk-lyric">“어제의 나는 무슨 망상을 했을까<br>오늘의 나를 기대하고 있었던 걸까”</p>
-          </div></div>
-        </div>
-
-        <!-- 04 열기 -->
-        <div class="trk-item" style="--a:#f97316; --b:#ef4444;">
-          <button class="trk-hdr" type="button" aria-expanded="false">
-            <span class="trk-no">04</span><span class="trk-title">열기</span><span class="trk-caret">▾</span>
-          </button>
-          <div class="trk-panel"><div class="trk-inner">
-            <p class="trk-lyric">“계절 끝에 숨은 우리의 약속들을<br>언젠가 모두 다 잊어버린다 해도”</p>
-          </div></div>
-        </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#listen">음악 감상하기</a>
       </div>
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section id="team" class="section">
-    <div class="wrap">
-      <h2 class="section-title">프로젝트 팀 소개</h2>
-      <figure class="band-hero"><img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy"></figure>
-      <div class="grid members">
-        <article class="member card"><img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy"/><div class="meta"><span class="role">Drums</span><strong>민태준</strong></div></article>
-        <article class="member card"><img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy"/><div class="meta"><span class="role">Guitar</span><strong>구현우</strong></div></article>
-        <article class="member card"><img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy"/><div class="meta"><span class="role">Bass</span><strong>윤병준</strong></div></article>
-        <article class="member card"><img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy"/><div class="meta"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div></article>
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="section-title">EP 소개</h2>
+        <p class="muted">
+          안녕하세요. 4인조 얼터너티브 록 밴드 나타샤입니다.
+          2024년의 어느 날 시작된 우리의 여정은 어느덧 여기까지 닿았습니다.
+          사랑을 꾹꾹 눌러 담아 만든 작은 EP, <b>[열기]</b>를 세상에 전합니다.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- REWARDS -->
-  <section id="rewards" class="section">
-    <div class="wrap">
-      <h2 class="section-title">선물 설명</h2>
-      <ul class="bullets">
-        <li>디지털 꾸러미: 비하인드 컷, 데모 자료 등 비밀스러운 자료 제공</li>
-        <li>피크 2EA, 핀버튼 2EA, 반다나, 티셔츠</li>
-        <li>실물 앨범, 친필 엽서(사진 변경 예정)</li>
-        <li>앨범 크레딧 Thanks to 기재(~8월 9일 후원자 한정)</li>
-      </ul>
-    </div>
-  </section>
+    <!-- TRACKS -->
+    <section id="tracks" class="section">
+      <div class="wrap">
+        <h2 class="section-title">곡 소개</h2>
 
-  <!-- LISTEN -->
-  <section id="listen" class="section">
-    <div class="wrap">
-      <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
-      <div class="buttons">
-        <a class="btn" href="https://www.instagram.com/bandnatasha_/" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn" href="https://soundcloud.com/user-905742043" target="_blank" rel="noopener">SoundCloud</a>
-        <a class="btn" href="https://www.youtube.com/@bandnatasha" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn" href="https://tumblbug.com/natashaepfever" target="_blank" rel="noopener">텀블벅</a>
+        <!-- (최소) 트랙 토글 전용 오버라이드: 디자인은 style.css가 담당 -->
+        <style>
+          /* 외부 CSS와 충돌 없게 패널만 토글 */
+          #trkAccordion .trk-panel{display:none !important;}
+          #trkAccordion .trk-item.open .trk-panel{display:block !important;}
+        </style>
+
+        <div class="trk-accordion" id="trkAccordion">
+          <!-- 01 탓 -->
+          <div class="trk-item" style="--a:#22d3ee; --b:#3b82f6;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">01</span>
+              <span class="trk-title">탓</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel"><div class="trk-inner">
+              <p class="trk-lyric">“그래서 널 위해 죽을 수 있냐면<br>뭐 그렇게까진 아냐”</p>
+            </div></div>
+          </div>
+
+          <!-- 02 불가해 -->
+          <div class="trk-item" style="--a:#6366f1; --b:#9333ea;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">02</span>
+              <span class="trk-title">불가해</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel"><div class="trk-inner">
+              <p class="trk-lyric">“언젠간 너도 알게 되겠지<br>차갑기만한 눈길로는<br>이해못할 하루를 살아갈 수 없다는 걸”</p>
+            </div></div>
+          </div>
+
+          <!-- 03 가시밭길 -->
+          <div class="trk-item" style="--a:#0ea5e9; --b:#0f766e;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">03</span>
+              <span class="trk-title">가시밭길</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel"><div class="trk-inner">
+              <p class="trk-lyric">“어제의 나는 무슨 망상을 했을까<br>오늘의 나를 기대하고 있었던 걸까”</p>
+            </div></div>
+          </div>
+
+          <!-- 04 열기 -->
+          <div class="trk-item" style="--a:#f97316; --b:#ef4444;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">04</span>
+              <span class="trk-title">열기</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel"><div class="trk-inner">
+              <p class="trk-lyric">“계절 끝에 숨은 우리의 약속들을<br>언젠가 모두 다 잊어버린다 해도”</p>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- 아주 단순한 토글 JS (충돌 방지, 애니메이션 X) -->
+        <script>
+          (function(){
+            const items=[...document.querySelectorAll('#trkAccordion .trk-item')];
+            items.forEach(it=>{
+              const btn=it.querySelector('.trk-hdr');
+              btn.onclick=()=>{
+                const was=it.classList.contains('open');
+                items.forEach(o=>o.classList.remove('open'));
+                if(!was) it.classList.add('open');
+              };
+            });
+          })();
+        </script>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="footer"><div class="wrap small muted">© 2025 Natasha. All rights reserved.</div></footer>
+    <!-- TEAM -->
+    <section id="team" class="section">
+      <div class="wrap">
+        <h2 class="section-title">프로젝트 팀 소개</h2>
+        <figure class="band-hero">
+          <img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy">
+        </figure>
+        <div class="grid members">
+          <article class="member card">
+            <img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy" />
+            <div class="meta"><span class="role">Drums</span><strong>민태준</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy" />
+            <div class="meta"><span class="role">Guitar</span><strong>구현우</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy" />
+            <div class="meta"><span class="role">Bass</span><strong>윤병준</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy" />
+            <div class="meta"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<!-- ===== Inline JS: 간단 토글(충돌 회피용, 애니메이션 X) ===== -->
-<script>
-(function(){
-  const items=[...document.querySelectorAll('#trkAccordion .trk-item')];
-  items.forEach(it=>{
-    const btn=it.querySelector('.trk-hdr');
-    btn.onclick=()=>{
-      const was=it.classList.contains('open');
-      items.forEach(o=>o.classList.remove('open'));
-      if(!was) it.classList.add('open');
-    };
-  });
-})();
-</script>
+    <!-- REWARDS -->
+    <section id="rewards" class="section">
+      <div class="wrap">
+        <h2 class="section-title">선물 설명</h2>
+        <ul class="bullets">
+          <li>디지털 꾸러미: 비하인드 컷, 데모 자료 등 비밀스러운 자료 제공</li>
+          <li>피크 2EA, 핀버튼 2EA, 반다나, 티셔츠</li>
+          <li>실물 앨범, 친필 엽서(사진 변경 예정)</li>
+          <li>앨범 크레딧 Thanks to 기재(~8월 9일 후원자 한정)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LISTEN -->
+    <section id="listen" class="section">
+      <div class="wrap">
+        <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
+        <div class="buttons">
+          <a class="btn" href="https://www.instagram.com/bandnatasha_/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://soundcloud.com/user-905742043" target="_blank" rel="noopener">SoundCloud</a>
+          <a class="btn" href="https://www.youtube.com/@bandnatasha" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn" href="https://tumblbug.com/natashaepfever" target="_blank" rel="noopener">텀블벅</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap small muted">© 2025 Natasha. All rights reserved.</div>
+  </footer>
+  <!-- 외부 script.js는 충돌 방지 위해 사용 안 함 -->
 </body>
 </html>
