@@ -1,192 +1,196 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>band NATASHA</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6">
-  </head>
-  <body>
-<header class="site-header">
-  <nav class="nav wrap">
-    <a class="brand" href="#hero">NATASHA</a>
-    <div class="nav-links">
-      <a href="#about">EP 소개</a>
-      <a href="#tracks">곡 소개</a>
-      <a href="#team">팀 소개</a>
-      <a href="#rewards">선물</a>
-      <a href="#listen">SNS</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>band NATASHA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a class="brand" href="#hero">NATASHA</a>
+      <div class="nav-links">
+        <a href="#about">EP 소개</a>
+        <a href="#tracks">곡 소개</a>
+        <a href="#team">팀 소개</a>
+        <a href="#rewards">선물</a>
+        <a href="#listen">SNS</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-content wrap">
+      <p class="kicker">EP • 열기</p>
+      <h1>나타샤 EP <span class="accent">[열기]</span></h1>
+      <p class="lead">
+        한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
+        그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
+        나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#listen">음악 감상하기</a>
+      </div>
     </div>
-  </nav>
-</header>
+  </section>
 
-
-    <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="hero-content wrap">
-        <p class="kicker">EP • 열기</p>
-        <h1>나타샤 EP <span class="accent">[열기]</span></h1>
-        <p class="lead">
-          한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
-          그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
-          나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="section-title">EP 소개</h2>
+        <p class="muted">
+          안녕하세요. 4인조 얼터너티브 록 밴드 나타샤입니다.
+          2024년의 어느 날 시작된 우리의 여정은 어느덧 여기까지 닿았습니다.
+          사랑을 꾹꾹 눌러 담아 만든 작은 EP, <b>[열기]</b>를 세상에 전합니다.
         </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#listen">음악 감상하기</a>
+      </div>
+    </section>
+
+    <!-- TRACKS -->
+    <section id="tracks" class="section">
+      <div class="wrap">
+        <h2 class="section-title">곡 소개</h2>
+
+        <div class="trk-accordion" id="trkAccordion">
+          <!-- 01 탓 : 초여름 / 청록 -->
+          <div class="trk-item" style="--a:#22d3ee; --b:#3b82f6;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">01</span>
+              <span class="trk-title">탓</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel">
+              <div class="trk-inner">
+                <p class="trk-quote">“그래서 널 위해 죽을 수 있냐면 뭐 그렇게까진 아냐”</p>
+                <p>초여름의 공기 같은 트랙. 경쾌한 드럼과 깨끗한 기타가 직선으로 밀어붙이고,
+                  베이스가 멜로디를 끌어올린다. 가사는 솔직한 선 긋기와 미안함 사이를 오가며,
+                  후렴에서 담담하게 ‘우린 각자 책임을 진다’는 톤을 남긴다.</p>
+                <p class="muted">무드: 산뜻·경쾌 / 포인트: 드럼 다운비트, 훅 반복</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 불가해 : 한가운데 / 인디고-보라 -->
+          <div class="trk-item" style="--a:#6366f1; --b:#9333ea;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">02</span>
+              <span class="trk-title">불가해</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel">
+              <div class="trk-inner">
+                <p class="trk-quote">“언젠간 너도 알게 되겠지… 이해 못할 하루를 살아갈 수 없다는 걸”</p>
+                <p>EP의 중심 축. 두터운 기타 레이어와 타이트한 킥이 텐션을 쌓고,
+                  프리코러스에서 잠깐 숨을 고른 뒤 코러스에서 크게 터진다.
+                  ‘세상과 나’의 간극을 정면으로 마주하는, 가장 직설적인 목소리.</p>
+                <p class="muted">무드: 팽팽·격정 / 포인트: 리프 주도, 코러스로 다이내믹 스파이크</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 가시밭길 : 장마 / 스카이-딥티얼 -->
+          <div class="trk-item" style="--a:#0ea5e9; --b:#0f766e;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">03</span>
+              <span class="trk-title">가시밭길</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel">
+              <div class="trk-inner">
+                <p class="trk-quote">“어제의 나는 무슨 망상을 했을까, 오늘의 나를 기대하고 있었던 걸까”</p>
+                <p>장맛비처럼 묵직한 곡. 톰 중심의 드럼과 낮게 흐르는 베이스, 젖은 리버브의 기타가
+                  무게를 더한다. 브리지에서 자책과 기대가 교차하고, 후반에 감정이 한 번 더 쏟아진다.</p>
+                <p class="muted">무드: 축축·무겁 / 포인트: 톰 그루브, 브리지 후 재폭발</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 열기 : 늦여름 / 오렌지-레드 -->
+          <div class="trk-item" style="--a:#f97316; --b:#ef4444;">
+            <button class="trk-hdr" type="button" aria-expanded="false">
+              <span class="trk-no">04</span>
+              <span class="trk-title">열기</span>
+              <span class="trk-caret">▾</span>
+            </button>
+            <div class="trk-panel">
+              <div class="trk-inner">
+                <p class="trk-quote">“계절 끝에 숨은 우리의 약속들을 언젠가 모두 다 잊어버린다 해도”</p>
+                <p>늦여름의 잔열을 담은 피날레. 넓은 스트로크의 기타와 개방감 있는 드럼이 공간을 열고,
+                  보컬은 마지막에 온기와 체념을 함께 남긴다. 여운이 길게 번지는 아웃트로.</p>
+                <p class="muted">무드: 뜨겁·여운 / 포인트: 개방 코드, 롱 아웃트로</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <main>
-      <!-- ABOUT -->
-      <section id="about" class="section">
-        <div class="wrap">
-          <h2 class="section-title">EP 소개</h2>
-          <p class="muted">
-            안녕하세요. 4인조 얼터너티브 록 밴드 나타샤입니다.
-            2024년의 어느 날 시작된 우리의 여정은 어느덧 여기까지 닿았습니다.
-            사랑을 꾹꾹 눌러 담아 만든 작은 EP, <b>[열기]</b>를 세상에 전합니다.
-          </p>
+    <!-- TEAM -->
+    <section id="team" class="section">
+      <div class="wrap">
+        <h2 class="section-title">프로젝트 팀 소개</h2>
+
+        <figure class="band-hero">
+          <img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy">
+        </figure>
+
+        <div class="grid members">
+          <article class="member card">
+            <img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy" />
+            <div class="meta"><span class="role">Drums</span><strong>민태준</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy" />
+            <div class="meta"><span class="role">Guitar</span><strong>구현우</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy" />
+            <div class="meta"><span class="role">Bass</span><strong>윤병준</strong></div>
+          </article>
+          <article class="member card">
+            <img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy" />
+            <div class="meta"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- TRACKS -->
-<section id="tracks" class="section">
-  <div class="wrap">
-    <h2 class="section-title">곡 소개</h2>
+    <!-- REWARDS (간단 표기만 유지) -->
+    <section id="rewards" class="section">
+      <div class="wrap">
+        <h2 class="section-title">선물 설명</h2>
+        <ul class="bullets">
+          <li>디지털 꾸러미: 비하인드 컷, 데모 자료 등 비밀스러운 자료 제공</li>
+          <li>피크 2EA, 핀버튼 2EA, 반다나, 티셔츠</li>
+          <li>실물 앨범, 친필 엽서(사진 변경 예정)</li>
+          <li>앨범 크레딧 Thanks to 기재(~8월 9일 후원자 한정)</li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="trk-accordion" id="trkAccordion">
-      <!-- 01 탓 : 초여름 / 청록 -->
-      <details class="trk" style="--a:#22d3ee; --b:#3b82f6;">
-        <summary class="trk-hdr">
-          <span class="trk-no">01</span>
-          <span class="trk-title">탓</span>
-          <span class="trk-caret">▾</span>
-        </summary>
-        <div class="trk-panel">
-          <p class="trk-quote">“그래서 널 위해 죽을 수 있냐면 뭐 그렇게까진 아냐”</p>
-          <p>초여름의 공기 같은 트랙. 경쾌한 드럼과 깨끗한 기타가 직선으로 밀어붙이고,
-            베이스가 멜로디를 끌어올린다. 가사는 솔직한 선 긋기와 미안함 사이를 오가며,
-            후렴에서 담담하게 ‘우린 각자 책임을 진다’는 톤을 남긴다.</p>
-          <p class="muted">무드: 산뜻·경쾌 / 포인트: 드럼 다운비트, 훅 반복</p>
+    <!-- LISTEN / SNS -->
+    <section id="listen" class="section">
+      <div class="wrap">
+        <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
+        <div class="buttons">
+          <a class="btn" href="https://www.instagram.com/bandnatasha_/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://soundcloud.com/user-905742043" target="_blank" rel="noopener">SoundCloud</a>
+          <a class="btn" href="https://www.youtube.com/@bandnatasha" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn" href="https://tumblbug.com/natashaepfever" target="_blank" rel="noopener">텀블벅</a>
         </div>
-      </details>
+      </div>
+    </section>
+  </main>
 
-      <!-- 02 불가해 : 한가운데 / 인디고-보라 -->
-      <details class="trk" style="--a:#6366f1; --b:#9333ea;">
-        <summary class="trk-hdr">
-          <span class="trk-no">02</span>
-          <span class="trk-title">불가해</span>
-          <span class="trk-caret">▾</span>
-        </summary>
-        <div class="trk-panel">
-          <p class="trk-quote">“언젠간 너도 알게 되겠지… 이해 못할 하루를 살아갈 수 없다는 걸”</p>
-          <p>EP의 중심 축. 두터운 기타 레이어와 타이트한 킥이 텐션을 쌓고,
-            프리코러스에서 잠깐 숨을 고른 뒤 코러스에서 크게 터진다.
-            ‘세상과 나’의 간극을 정면으로 마주하는, 가장 직설적인 목소리.</p>
-          <p class="muted">무드: 팽팽·격정 / 포인트: 리프 주도, 코러스로 다이내믹 스파이크</p>
-        </div>
-      </details>
+  <footer class="footer">
+    <div class="wrap small muted">© 2025 Natasha. All rights reserved.</div>
+  </footer>
 
-      <!-- 03 가시밭길 : 장마 / 스카이-딥티얼 -->
-      <details class="trk" style="--a:#0ea5e9; --b:#0f766e;">
-        <summary class="trk-hdr">
-          <span class="trk-no">03</span>
-          <span class="trk-title">가시밭길</span>
-          <span class="trk-caret">▾</span>
-        </summary>
-        <div class="trk-panel">
-          <p class="trk-quote">“어제의 나는 무슨 망상을 했을까, 오늘의 나를 기대하고 있었던 걸까”</p>
-          <p>장맛비처럼 묵직한 곡. 톰 중심의 드럼과 낮게 흐르는 베이스, 젖은 리버브의 기타가
-            무게를 더한다. 브리지에서 자책과 기대가 교차하고, 후반에 감정이 한 번 더 쏟아진다.</p>
-          <p class="muted">무드: 축축·무겁 / 포인트: 톰 그루브, 브리지 후 재폭발</p>
-        </div>
-      </details>
-
-      <!-- 04 열기 : 늦여름 / 오렌지-레드 -->
-      <details class="trk" style="--a:#f97316; --b:#ef4444;">
-        <summary class="trk-hdr">
-          <span class="trk-no">04</span>
-          <span class="trk-title">열기</span>
-          <span class="trk-caret">▾</span>
-        </summary>
-        <div class="trk-panel">
-          <p class="trk-quote">“계절 끝에 숨은 우리의 약속들을 언젠가 모두 다 잊어버린다 해도”</p>
-          <p>늦여름의 잔열을 담은 피날레. 넓은 스트로크의 기타와 개방감 있는 드럼이 공간을 열고,
-            보컬은 마지막에 온기와 체념을 함께 남긴다. 여운이 길게 번지는 아웃트로.</p>
-          <p class="muted">무드: 뜨겁·여운 / 포인트: 개방 코드, 롱 아웃트로</p>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-      <!-- TEAM -->
-<section id="team" class="section">
-  <div class="wrap">
-    <h2 class="section-title">프로젝트 팀 소개</h2>
-
-    <!-- 단체 사진 -->
-    <figure class="band-hero">
-      <img src="assets/member/all.PNG" alt="나타샤 단체 사진" loading="lazy">
-    </figure>
-
-    <!-- 멤버 카드 -->
-    <div class="grid members">
-      <article class="member card">
-        <img src="assets/member/tj.PNG" alt="민태준 - Drums" loading="lazy" />
-        <div class="meta">
-          <span class="role">Drums</span>
-          <strong>민태준</strong>
-        </div>
-      </article>
-
-      <article class="member card">
-        <img src="assets/member/hw.PNG" alt="구현우 - Guitar" loading="lazy" />
-        <div class="meta">
-          <span class="role">Guitar</span>
-          <strong>구현우</strong>
-        </div>
-      </article>
-
-      <article class="member card">
-        <img src="assets/member/bj.PNG" alt="윤병준 - Bass" loading="lazy" />
-        <div class="meta">
-          <span class="role">Bass</span>
-          <strong>윤병준</strong>
-        </div>
-      </article>
-
-      <article class="member card">
-        <img src="assets/member/sj.PNG" alt="김석주 - Vocal &amp; Guitar" loading="lazy" />
-        <div class="meta">
-          <span class="role">Vocal &amp; Guitar</span>
-          <strong>김석주</strong>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-      <!-- LISTEN / SNS -->
-      <section id="listen" class="section">
-        <div class="wrap">
-          <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
-          <div class="buttons">
-            <a class="btn" href="https://www.instagram.com/bandnatasha_/" target="_blank" rel="noopener">Instagram</a>
-            <a class="btn" href="https://soundcloud.com/user-905742043" target="_blank" rel="noopener">SoundCloud</a>
-            <a class="btn" href="https://www.youtube.com/@bandnatasha" target="_blank" rel="noopener">YouTube</a>
-            <a class="btn" href="https://tumblbug.com/natashaepfever" target="_blank" rel="noopener">텀블벅</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="wrap small muted">© 2025 Natasha. All rights reserved.</div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js?v=7"></script>
+</body>
 </html>
