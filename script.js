@@ -17,3 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(el);
   });
 });
+// Tracks: only one open at a time
+document.addEventListener('DOMContentLoaded', () => {
+  const groups = document.querySelectorAll('#tracklist .track');
+  groups.forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) {
+        groups.forEach(o => { if (o !== d) o.open = false; });
+      }
+    });
+  });
+});
