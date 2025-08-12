@@ -130,3 +130,66 @@ img{ max-width:100%; display:block; }
 .member {
   margin-bottom: 18px;
 }
+
+/* ===== Tracks (Accordion) ===== */
+.tracklist{
+  display: grid;
+  gap: 12px;
+}
+.track{
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.track-summary{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 16px 16px;
+  user-select: none;
+}
+.track-summary::-webkit-details-marker{ display: none; }
+
+.track-no{
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid var(--border); border-radius: 10px;
+  font-weight: 700; color: var(--fg-colour); opacity: .9;
+}
+.track-title{
+  font-weight: 700; letter-spacing: .01em;
+}
+.track-meta{
+  color: var(--muted-colour); font-size: .9rem;
+}
+
+/* 펼쳐진 상태 강조 */
+.track[open] .track-summary{
+  background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border-bottom: 1px solid var(--border);
+}
+
+/* 본문 */
+.track-body{
+  padding: 14px 16px 16px;
+  color: var(--fg-colour);
+}
+.track-body .quote{
+  margin: 0 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent-colour);
+  color: var(--fg-colour);
+  opacity: .95;
+}
+
+/* 작은 화면 최적화 */
+@media (max-width: 720px){
+  .track-summary{
+    grid-template-columns: 40px 1fr;
+  }
+  .track-meta{ display: none; }
+}
