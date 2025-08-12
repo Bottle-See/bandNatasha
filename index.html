@@ -4,192 +4,141 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>band NATASHA</title>
-    <!-- Link to the site stylesheet -->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Hero section with a sticky navigation bar and introductory text -->
-    <header id="hero">
-      <nav class="navbar">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#ep">EP 소개</a></li>
-          <li><a href="#tracks">곡 소개</a></li>
-          <li><a href="#schedule">일정</a></li>
-          <li><a href="#team">팀 소개</a></li>
-          <li><a href="#rewards">선물 설명</a></li>
-          <li><a href="#contact">SNS</a></li>
-        </ul>
-      </nav>
-      <div class="hero-content">
-        <h1>
-          나타샤&nbsp;EP&nbsp;<span>[열기]</span>
-        </h1>
-        <p>
-          한&nbsp;해는&nbsp;네&nbsp;개의&nbsp;계절,&nbsp;열두&nbsp;개의&nbsp;달로&nbsp;나뉩니다. 그렇다면 하나의
-          계절은 몇&nbsp;마디의&nbsp;시간으로 이루어져 있을까요? 분절하는 것은 무엇이며,
-          흐르는 것은 무엇일까요? 계절의 경계와 시작, 그리고 그 끝에서 우리의
-          감정은 어떤 궤적을 따라 흘러가는지 함께 느껴보세요.
-        </p>
-        <button id="playVideoButton" class="primary-btn">음악 감상하기</button>
-      </div>
-      <!-- Modal container for YouTube video. Replace YOUR_VIDEO_ID_HERE with a real video id later. -->
-      <div id="videoModal" class="modal">
-        <div class="modal-content">
-          <span class="close" id="modalClose">&times;</span>
-          <iframe
-            id="musicVideo"
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE"
-            title="Natasha Music Video"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+    <header class="site-header">
+      <nav class="nav wrap">
+        <a class="brand" href="#hero">NATASHA</a>
+        <div class="nav-links">
+          <a href="#about">EP 소개</a>
+          <a href="#tracks">곡 소개</a>
+          <a href="#timeline">일정</a>
+          <a href="#team">팀 소개</a>
+          <a href="#rewards">선물</a>
+          <a href="#listen">SNS</a>
         </div>
-      </div>
+      </nav>
     </header>
 
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-content wrap">
+        <p class="kicker">EP • 열기</p>
+        <h1>나타샤 EP <span class="accent">[열기]</span></h1>
+        <p class="lead">
+          한 해는 네 개의 계절, 열두 개의 달로 나뉘고,
+          그 끝에서 우리의 감정은 각자의 궤적을 따라 흘러갑니다.
+          나타샤는 그 흐름을 한 장의 EP에 담아 여러분께 전합니다.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#listen">음악 감상하기</a>
+        </div>
+      </div>
+    </section>
+
     <main>
-      <!-- EP description section -->
-      <section id="ep" class="content-section">
-        <h2>EP 소개</h2>
-        <p>
-          안녕하세요.&nbsp;4인조 얼터너티브 록 밴드 <strong>나타샤</strong>입니다. 2024년 어느 날
-          시작된 우리의 여정은 여러분의 사랑에 힘입어 여기까지 닿았습니다. 사랑을
-          꾹꾹 눌러 담아 만들어 낸 작은 EP <strong>[열기]</strong>를 세상에 전하기 위해
-          여러분의 손을 빌려 봅니다. 이 EP는 계절의 흐름을 따라 곡들이 순서대로
-          배치되어 있습니다. 초여름의 설렘부터 무더운 여름 밤, 장마, 그리고
-          늦여름의 열기를 담아냈습니다.
-        </p>
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="wrap">
+          <h2 class="section-title">EP 소개</h2>
+          <p class="muted">
+            안녕하세요. 4인조 얼터너티브 록 밴드 나타샤입니다.
+            2024년의 어느 날 시작된 우리의 여정은 어느덧 여기까지 닿았습니다.
+            사랑을 꾹꾹 눌러 담아 만든 작은 EP, <b>[열기]</b>를 세상에 전합니다.
+          </p>
+        </div>
       </section>
 
-      <!-- Track list section -->
-      <section id="tracks" class="content-section">
-        <h2>곡 소개</h2>
-        <div class="track-list">
-          <div class="track">
-            <h3>1.&nbsp;탓</h3>
-            <p>“그래서 널 위해 죽을 수 있냐면 뭐 그렇게까진 아냐”</p>
-          </div>
-          <div class="track">
-            <h3>2.&nbsp;불가해</h3>
-            <p>“언젠간 너도 알게 되겠지 차갑기만 한 눈길로는 이해 못할 하루를 살아갈 수 없다는 걸”</p>
-          </div>
-          <div class="track">
-            <h3>3.&nbsp;가시밭길</h3>
-            <p>“어제의 나는 무슨 망상을 했을까 오늘의 나를 기대하고 있었던 걸까”</p>
-          </div>
-          <div class="track">
-            <h3>4.&nbsp;열기</h3>
-            <p>“계절 끝에 숨은 우리의 약속들을 언젠가 모두 다 잊어버린다 해도”</p>
+      <!-- TRACKS -->
+      <section id="tracks" class="section">
+        <div class="wrap">
+          <h2 class="section-title">곡 소개</h2>
+          <div class="grid cards">
+            <article class="card">
+              <h3>1. 탓</h3>
+              <p>“그래서 널 위해 죽을 수 있냐면 뭐 그렇게까진 아냐”</p>
+            </article>
+            <article class="card">
+              <h3>2. 불가해</h3>
+              <p>“언젠간 너도 알게 되겠지… 이해 못할 하루를 살아갈 수 없다는 걸”</p>
+            </article>
+            <article class="card">
+              <h3>3. 가시밭길</h3>
+              <p>“어제의 나는 무슨 망상을 했을까, 오늘의 나를 기대하고 있었던 걸까”</p>
+            </article>
+            <article class="card">
+              <h3>4. 열기</h3>
+              <p>“계절 끝에 숨은 우리의 약속들을 언젠가 모두 다 잊어버린다 해도”</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Production process and budget section -->
-      <section id="process" class="content-section">
-        <h2>제작 과정 및 예산</h2>
-        <p>
-          모든 음원은 현재 제작 초기 단계에 있으며, 후원금은 다음과 같은 항목에
-          사용될 예정입니다.
-        </p>
-        <ul>
-          <li>레코딩 비용</li>
-          <li>믹싱/마스터링 비용</li>
-          <li>앨범 커버 및 리워드 디자인 비용</li>
-          <li>실물 앨범 제작 비용</li>
-          <li>리워드 제작 비용</li>
-          <li>영상 및 사진 촬영, 대관료</li>
-          <li>기타 수수료 및 세금</li>
-        </ul>
+      <!-- TIMELINE -->
+      <section id="timeline" class="section">
+        <div class="wrap">
+          <h2 class="section-title">프로젝트 일정</h2>
+          <ol class="timeline">
+            <li><time>2025-07-19</time><span>프로젝트 시작</span></li>
+            <li><time>2025-07-25</time><span>믹싱·마스터링</span></li>
+            <li><time>2025-08-10</time><span>유통사 음원/자료 전달</span></li>
+            <li><time>2025-08-12</time><span>MV 등 영상 촬영</span></li>
+            <li><time>2025-08-19</time><span>펀딩 종료</span></li>
+            <li><time>2025-08-25</time><span>리워드 샘플 확인</span></li>
+            <li><time>2025-08-31</time><span>제품 발주</span></li>
+            <li><time>2025-09-05</time><span>후가공·포장</span></li>
+            <li><time>2025-09-23</time><span>선물 예상 전달</span></li>
+          </ol>
+        </div>
       </section>
 
-      <!-- Project timeline section -->
-      <section id="schedule" class="content-section">
-        <h2>프로젝트 일정</h2>
-        <ul class="timeline">
-          <li><span class="date">2025-07-19</span>프로젝트 시작일</li>
-          <li><span class="date">2025-07-25</span>믹싱, 마스터링</li>
-          <li><span class="date">2025-08-10</span>유통사 음원 및 자료 전달</li>
-          <li><span class="date">2025-08-12</span>MV 등 영상자료 촬영일</li>
-          <li><span class="date">2025-08-19</span>펀딩 종료일</li>
-          <li><span class="date">2025-08-25</span>리워드 샘플 확인 및 보완</li>
-          <li><span class="date">2025-08-31</span>제품 발주 시작</li>
-          <li><span class="date">2025-09-05</span>후가공 처리 및 포장 작업</li>
-          <li><span class="date">2025-09-23</span>선물 예상 전달일</li>
-        </ul>
-      </section>
-
-      <!-- Team introduction section -->
-      <section id="team" class="content-section">
-        <h2>프로젝트 팀 소개</h2>
-        <p>
-          백석의 시 ‘나와 나타샤와 흰 당나귀’에서 영감을 받아 탄생한 나타샤의 이름에는
-          시 속에서 애정과 그리움의 대상이자 이상향인 나타샤와 같은 존재가 되고 싶은
-          마음이 담겨 있습니다. 2024년 결성된 나타샤는 홍대를 중심으로 활발한 라이브
-          활동을 펼치며 자신들만의 색을 구축해 왔습니다. 2025년 2월 첫 싱글
-          <strong>Obsession</strong>의 텀블벅 프로젝트를 성공적으로 마무리하며 본격적인
-          행보를 시작했고, 이후 통영프린지 페스티벌 참여와 부산국제록페스티벌 주최
-          ‘루키즈 온 더 부락’ TOP10 선정 등 짧은 시간 안에 눈에 띄는 성과를 이루며
-          주목받고 있습니다.
-        </p>
-        <h3>멤버 소개</h3>
-        <div class="members">
-          <div class="member">
-            <h4>민태준</h4>
-            <p>Drums</p>
-          </div>
-          <div class="member">
-            <h4>윤병준</h4>
-            <p>Bass</p>
-          </div>
-          <div class="member">
-            <h4>구현우</h4>
-            <p>Guitar</p>
-          </div>
-          <div class="member">
-            <h4>김석주</h4>
-            <p>Vocal&nbsp;&amp;&nbsp;Guitar</p>
+      <!-- TEAM -->
+      <section id="team" class="section">
+        <div class="wrap">
+          <h2 class="section-title">프로젝트 팀 소개</h2>
+          <div class="grid members">
+            <div class="member card"><span class="role">Drums</span><strong>민태준</strong></div>
+            <div class="member card"><span class="role">Bass</span><strong>윤병준</strong></div>
+            <div class="member card"><span class="role">Guitar</span><strong>구현우</strong></div>
+            <div class="member card"><span class="role">Vocal &amp; Guitar</span><strong>김석주</strong></div>
           </div>
         </div>
       </section>
 
-      <!-- Rewards section -->
-      <section id="rewards" class="content-section">
-        <h2>선물 설명</h2>
-        <ul>
-          <li>디지털 꾸러미: 브이로그, 비하인드 컷, 데모 자료 등 비밀스러운 자료 제공</li>
-          <li>피크&nbsp;2EA: 열기 테마 양면 인쇄된 셀룰로이드 피크</li>
-          <li>핀버튼&nbsp;2EA: 열기 테마 로고와 앨범 자켓 이미지가 담긴 50mm 핀버튼</li>
-          <li>반다나: 50cm&nbsp;×&nbsp;50cm 패브릭 소재, 열기 테마 디자인</li>
-          <li>티셔츠: OS 사이즈, 불꽃놀이 테마 디자인</li>
-          <li>실물 앨범: 나타샤의 첫 실물 앨범</li>
-          <li>친필 엽서: 감사의 마음을 담은 엽서&nbsp;(사진 변경 예정)</li>
-          <li>앨범 크레딧 Thanks&nbsp;to 기재: 8월&nbsp;9일까지 후원자 이름을 크레딧에 표기</li>
-        </ul>
+      <!-- REWARDS -->
+      <section id="rewards" class="section">
+        <div class="wrap">
+          <h2 class="section-title">선물 설명</h2>
+          <ul class="bullets">
+            <li>디지털 꾸러미: 비하인드 컷, 데모 자료 등 비밀스러운 자료 제공</li>
+            <li>피크 2EA, 핀버튼 2EA, 반다나, 티셔츠</li>
+            <li>실물 앨범, 친필 엽서(사진 변경 예정)</li>
+            <li>앨범 크레딧 Thanks to 기재(~8월 9일 후원자 한정)</li>
+          </ul>
+        </div>
       </section>
 
-      <!-- Contact and social section -->
-      <section id="contact" class="content-section">
-        <h2>문의 및&nbsp;SNS</h2>
-        <p>나타샤의 소식을 더 알고 싶다면 아래 링크를 통해 저희를 만나보세요.</p>
-        <ul class="social">
-          <li><a href="https://www.instagram.com/bandnatasha_/" target="_blank">Instagram</a></li>
-          <li><a href="https://soundcloud.com/user-905742043" target="_blank">SoundCloud</a></li>
-          <li><a href="https://www.youtube.com/@bandnatasha" target="_blank">YouTube</a></li>
-          <li><a href="https://tumblbug.com/natashaepfever" target="_blank">펀딩 페이지</a></li>
-        </ul>
+      <!-- LISTEN / SNS -->
+      <section id="listen" class="section">
+        <div class="wrap">
+          <h2 class="section-title">지금 듣기 &amp; 팔로우</h2>
+          <div class="buttons">
+            <a class="btn" href="https://www.instagram.com/bandnatasha_/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn" href="https://soundcloud.com/user-905742043" target="_blank" rel="noopener">SoundCloud</a>
+            <a class="btn" href="https://www.youtube.com/@bandnatasha" target="_blank" rel="noopener">YouTube</a>
+            <a class="btn" href="https://tumblbug.com/natashaepfever" target="_blank" rel="noopener">텀블벅</a>
+          </div>
+        </div>
       </section>
     </main>
 
-    <!-- Page footer -->
-    <footer>
-      <p>&copy;&nbsp;2025&nbsp;Natasha.&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+    <footer class="footer">
+      <div class="wrap small muted">© 2025 Natasha. All rights reserved.</div>
     </footer>
 
-    <!-- Site scripts -->
     <script src="script.js"></script>
   </body>
 </html>
