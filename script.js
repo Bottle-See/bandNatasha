@@ -1,29 +1,19 @@
-// JavaScript for Natasha EP "열기" event web app
-// Handles the opening and closing of the modal player
-
 document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('videoModal');
-  const playBtn = document.getElementById('playVideoButton');
-  const closeBtn = document.getElementById('modalClose');
+  const reveals = document.querySelectorAll('.section, .card, .timeline li, .member');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.style.transition = 'opacity .6s ease, transform .6s ease';
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.12});
 
-  // Show modal when play button is clicked
-  playBtn?.addEventListener('click', () => {
-    if (modal) {
-      modal.style.display = 'flex';
-    }
-  });
-
-  // Close modal when close icon is clicked
-  closeBtn?.addEventListener('click', () => {
-    if (modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  // Close modal when clicking outside of modal content
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
+  reveals.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(12px)';
+    io.observe(el);
   });
 });
