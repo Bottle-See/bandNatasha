@@ -132,11 +132,11 @@ img{ max-width:100%; display:block; }
 }
 
 /* ===== Tracks (Accordion) ===== */
-/* ===== Tracks Accordion (card slide) ===== */
-.accordion{ display:grid; gap:12px; }
+/* ===== Tracks – Natasha style accordion ===== */
+.trk-accordion{ display:grid; gap:12px; }
 
-.acc-item{
-  --accent: var(--accent-colour);
+.trk-item{
+  --trk-accent: var(--accent-colour);
   border:1px solid var(--border);
   border-radius: var(--radius);
   background: var(--card-bg);
@@ -144,82 +144,66 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 6px 16px rgba(0,0,0,.15);
 }
 
-/* 제목 바 – 색 포인트 & 클릭 느낌 */
-.acc-header{
-  all: unset;
-  display:grid;
+/* 제목바: 색 포인트 + 클릭 느낌 분명하게 */
+.trk-hdr{
+  all: unset; display:grid; width:100%;
   grid-template-columns: 52px 1fr auto;
-  align-items:center;
-  gap:12px;
-  width:100%;
-  cursor:pointer;
+  align-items:center; gap:12px;
+  cursor:pointer; user-select:none;
   padding:16px 16px;
   background:
     linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%);
+    linear-gradient(90deg, color-mix(in srgb, var(--trk-accent) 22%, transparent), transparent 60%);
   border-bottom:1px solid var(--border);
 }
+.trk-hdr:hover{ filter:brightness(1.06); }
+.trk-hdr:active{ transform: translateY(.5px); }
 
-.acc-header:hover{ filter: brightness(1.06); }
-.acc-header:active{ transform: translateY(0.5px); }
-
-.acc-no{
+.trk-no{
   width:36px; height:36px; display:grid; place-items:center;
   border:1px solid var(--border); border-radius:10px;
   font-weight:800; color:#fff;
-  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  background: color-mix(in srgb, var(--trk-accent) 24%, transparent);
 }
-
-.acc-title{
-  font-weight:800;
-  letter-spacing:.01em;
-  color: color-mix(in srgb, var(--accent) 75%, #ffffff 10%);
+.trk-title{
+  font-weight:800; letter-spacing:.01em;
+  color: color-mix(in srgb, var(--trk-accent) 78%, #ffffff 12%);
   text-shadow: 0 1px 0 rgba(0,0,0,.25);
 }
-
-.acc-caret{
+.trk-caret{
+  color: color-mix(in srgb, var(--trk-accent) 70%, #ffffff 20%);
   transition: transform .25s ease;
-  color: color-mix(in srgb, var(--accent) 70%, #ffffff 20%);
-  font-size: 18px;
+  font-size:18px;
 }
 
-/* 패널(내용) – 스르륵 열림 */
-.acc-panel{
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding: 0 16px;                 /* 닫힐 땐 위아래 패딩 0 */
-  transition: max-height .35s ease, opacity .25s ease, padding .25s ease;
+/* 패널: 스르륵 열림/닫힘 */
+.trk-panel{
+  max-height:0; opacity:0; overflow:hidden;
+  padding:0 16px;
+  transition:max-height .35s ease, opacity .25s ease, padding .25s ease;
   background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
 }
-
-.acc-inner{
-  padding: 14px 0 16px;
-  border-left: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
+.trk-inner{
+  padding:14px 0 16px;
+  border-left:3px solid color-mix(in srgb, var(--trk-accent) 70%, transparent);
+}
+.trk-quote{
+  margin:0 0 8px; padding-left:10px;
+  border-left:3px solid color-mix(in srgb, var(--trk-accent) 70%, transparent);
+  color:var(--fg-colour); opacity:.95;
 }
 
-.acc-item.open .acc-panel{
-  /* JS가 정확한 높이를 넣어줌; CSS는 애니메이션용 프로퍼티만 */
-  opacity: 1;
-  padding: 12px 16px 16px;
-}
-
-.acc-item.open .acc-header{ background:
+/* 열린 상태 */
+.trk-item.open .trk-panel{ opacity:1; padding:12px 16px 16px; }
+.trk-item.open .trk-hdr{
+  background:
     linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 28%, transparent), transparent 70%);
+    linear-gradient(90deg, color-mix(in srgb, var(--trk-accent) 28%, transparent), transparent 70%);
 }
-.acc-item.open .acc-caret{ transform: rotate(180deg); }
+.trk-item.open .trk-caret{ transform: rotate(180deg); }
 
-.acc-inner .quote{
-  margin: 0 0 8px;
-  padding-left: 10px;
-  border-left: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
-  color: var(--fg-colour);
-  opacity: .95;
-}
-
-/* 모바일 최적화 */
+/* 모바일 */
 @media (max-width: 720px){
-  .acc-header{ grid-template-columns: 44px 1fr auto; padding:14px 14px; }
-  .acc-no{ width:32px; height:32px; }
+  .trk-hdr{ grid-template-columns:44px 1fr auto; padding:14px 14px; }
+  .trk-no{ width:32px; height:32px; }
 }
