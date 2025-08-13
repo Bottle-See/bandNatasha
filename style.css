@@ -31,3 +31,45 @@
   inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.1), rgba(0,0,0,0.35));
 }
+/* === Fever theme overrides (blue tone) === */
+.theme-fever{
+  --brand: #50b7ff;
+  --brand2: #9bd9ff;
+}
+
+/* Gradient text for [열기] */
+.title-accent{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Show feverlogo on hero card
+   NOTE: Path matches user's repo: bandNatasha/assets/etc/feverlogo.png
+*/
+.hero-card.image{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+}
+.hero-card.image::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('bandNatasha/assets/etc/feverlogo.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+/* subtle overlay for readability */
+.hero-card.image::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 80% at 20% 10%, rgba(255,255,255,0.12), transparent 45%), 
+              linear-gradient(180deg, rgba(0,0,0,0.2), transparent 50%);
+  pointer-events: none;
+}
+
