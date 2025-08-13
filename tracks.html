@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>곡 소개 — NATASHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c10;--fg:#eef0f2;--muted:#9aa3ad;--card:#121419;--border:#1f2329}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px}
+.header{display:flex;align-items:center;gap:12px;min-height:64px;border-bottom:1px solid var(--border)}
+.header a{color:#fff;text-decoration:none}
+h1{margin:16px 0 14px;font-weight:800;font-size:32px}
+#trkAccordion{display:grid;gap:14px;margin-top:16px}
+.trk-item{border:1px solid var(--border);border-radius:16px;background:var(--card);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.trk-hdr{all:unset;display:grid;width:100%;grid-template-columns:52px 1fr auto;align-items:center;gap:12px;cursor:pointer;padding:16px 18px;background:#151821;border-bottom:1px solid var(--border)}
+.trk-no{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:10px;font-weight:800}
+.trk-title{font-weight:800}.trk-caret{transition:.25s}.open .trk-caret{transform:rotate(180deg)}
+.trk-panel{max-height:0;opacity:0;overflow:hidden;padding:0 18px;transition:max-height .38s ease, opacity .25s ease, padding .25s ease}
+.open .trk-panel{opacity:1;padding:16px 18px 18px}
+.trk-lyric{margin:0;line-height:1.8}
+</style></head><body>
+<div class="wrap">
+  <div class="header"><a href="home.html">← Home</a></div>
+  <h1>곡 소개</h1>
+
+  <div id="trkAccordion">
+    <div class="trk-item" style="--a:#22d3ee;--b:#3b82f6;">
+      <button class="trk-hdr" type="button" aria-expanded="false">
+        <span class="trk-no">01</span><span class="trk-title">탓</span><span class="trk-caret">▾</span>
+      </button>
+      <div class="trk-panel"><p class="trk-lyric">“그래서 널 위해 죽을 수 있냐면<br>뭐 그렇게까진 아냐”</p></div>
+    </div>
+
+    <div class="trk-item" style="--a:#6366f1;--b:#9333ea;">
+      <button class="trk-hdr" type="button" aria-expanded="false">
+        <span class="trk-no">02</span><span class="trk-title">불가해</span><span class="trk-caret">▾</span>
+      </button>
+      <div class="trk-panel"><p class="trk-lyric">“언젠간 너도 알게 되겠지<br>차갑기만한 눈길로는<br>이해못할 하루를 살아갈 수 없다는 걸”</p></div>
+    </div>
+
+    <div class="trk-item" style="--a:#0ea5e9;--b:#0f766e;">
+      <button class="trk-hdr" type="button" aria-expanded="false">
+        <span class="trk-no">03</span><span class="trk-title">가시밭길</span><span class="trk-caret">▾</span>
+      </button>
+      <div class="trk-panel"><p class="trk-lyric">“어제의 나는 무슨 망상을 했을까<br>오늘의 나를 기대하고 있었던 걸까”</p></div>
+    </div>
+
+    <div class="trk-item" style="--a:#f97316;--b:#ef4444;">
+      <button class="trk-hdr" type="button" aria-expanded="false">
+        <span class="trk-no">04</span><span class="trk-title">열기</span><span class="trk-caret">▾</span>
+      </button>
+      <div class="trk-panel"><p class="trk-lyric">“계절 끝에 숨은 우리의 약속들을<br>언젠가 모두 다 잊어버린다 해도”</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const items=[...document.querySelectorAll('#trkAccordion .trk-item')];
+  const open=(it)=>{if(it.classList.contains('open'))return;const p=it.querySelector('.trk-panel');it.classList.add('open');p.style.maxHeight=p.scrollHeight+'px';};
+  const close=(it)=>{if(!it.classList.contains('open'))return;const p=it.querySelector('.trk-panel');p.style.maxHeight=p.scrollHeight+'px';requestAnimationFrame(()=>{p.style.maxHeight='0px';it.classList.remove('open');});};
+  items.forEach(it=>{const btn=it.querySelector('.trk-hdr');const p=it.querySelector('.trk-panel');p.style.maxHeight='0px';btn.addEventListener('click',()=>{const was=it.classList.contains('open');items.forEach(close);if(!was)open(it);});});
+  window.addEventListener('resize',()=>{const p=document.querySelector('.trk-item.open .trk-panel');if(p){p.style.maxHeight=p.scrollHeight+'px';}});
+})();
+</script>
+</body></html>
