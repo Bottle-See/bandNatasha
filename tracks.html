@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
+  <link rel="stylesheet" href="style.css?v=1">
+<script src="script.js" defer></script>
+
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>곡 소개 — NATASHA</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0b0c10;--fg:#eef0f2;--muted:#9aa3ad;--card:#121419;--border:#1f2329}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:900px;margin:0 auto;padding:28px 20px}
-.header{display:flex;align-items:center;gap:12px;min-height:64px;border-bottom:1px solid var(--border)}
-.header a{color:#fff;text-decoration:none}
-h1{margin:16px 0 14px;font-weight:800;font-size:32px}
-#trkAccordion{display:grid;gap:14px;margin-top:16px}
-.trk-item{border:1px solid var(--border);border-radius:16px;background:var(--card);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.trk-hdr{all:unset;display:grid;width:100%;grid-template-columns:52px 1fr auto;align-items:center;gap:12px;cursor:pointer;padding:16px 18px;background:#151821;border-bottom:1px solid var(--border)}
-.trk-no{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--border);border-radius:10px;font-weight:800}
-.trk-title{font-weight:800}.trk-caret{transition:.25s}.open .trk-caret{transform:rotate(180deg)}
-.trk-panel{max-height:0;opacity:0;overflow:hidden;padding:0 18px;transition:max-height .38s ease, opacity .25s ease, padding .25s ease}
-.open .trk-panel{opacity:1;padding:16px 18px 18px}
-.trk-lyric{margin:0;line-height:1.8}
-</style></head><body>
+</head><body>
 <div class="wrap">
   <div class="header"><a href="home.html">← Home</a></div>
   <h1>곡 소개</h1>
@@ -54,13 +42,4 @@ h1{margin:16px 0 14px;font-weight:800;font-size:32px}
   </div>
 </div>
 
-<script>
-(function(){
-  const items=[...document.querySelectorAll('#trkAccordion .trk-item')];
-  const open=(it)=>{if(it.classList.contains('open'))return;const p=it.querySelector('.trk-panel');it.classList.add('open');p.style.maxHeight=p.scrollHeight+'px';};
-  const close=(it)=>{if(!it.classList.contains('open'))return;const p=it.querySelector('.trk-panel');p.style.maxHeight=p.scrollHeight+'px';requestAnimationFrame(()=>{p.style.maxHeight='0px';it.classList.remove('open');});};
-  items.forEach(it=>{const btn=it.querySelector('.trk-hdr');const p=it.querySelector('.trk-panel');p.style.maxHeight='0px';btn.addEventListener('click',()=>{const was=it.classList.contains('open');items.forEach(close);if(!was)open(it);});});
-  window.addEventListener('resize',()=>{const p=document.querySelector('.trk-item.open .trk-panel');if(p){p.style.maxHeight=p.scrollHeight+'px';}});
-})();
-</script>
 </body></html>
