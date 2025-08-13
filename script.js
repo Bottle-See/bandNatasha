@@ -1,8 +1,6 @@
 
 /* ===============================
-   NATASHA EPK — FEVER THEME (script.js)
-   Accordion: fully visible content, smooth transitions (no snapping)
-   ARIA + keyboard
+   NATASHA EPK — FEVER THEME v2 (script.js)
    =============================== */
 (function(){
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
