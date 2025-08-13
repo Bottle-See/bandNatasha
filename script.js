@@ -1,6 +1,6 @@
 
 /* ===============================
-   NATASHA EPK – v2 (script.js)
+   NATASHA EPK — Rebuild (script.js)
    Accordion: fully visible content, smooth transitions (no snapping)
    ARIA + keyboard
    =============================== */
@@ -10,11 +10,15 @@
   qsa('.acc-item').forEach((item, idx) => {
     const btn = item.querySelector('.acc-btn');
     const panel = item.querySelector('.acc-panel');
-    const inner = document.createElement('div');
-    // move existing children into inner wrapper for reliable height
-    while (panel.firstChild) inner.appendChild(panel.firstChild);
-    inner.className = 'acc-inner';
-    panel.appendChild(inner);
+
+    // Wrap existing children into inner for reliable height
+    let inner = panel.querySelector('.acc-inner');
+    if(!inner){
+      inner = document.createElement('div');
+      inner.className = 'acc-inner';
+      while (panel.firstChild) inner.appendChild(panel.firstChild);
+      panel.appendChild(inner);
+    }
 
     // ARIA
     const panelId = `acc-panel-${idx}`;
@@ -29,9 +33,7 @@
     const open = () => {
       item.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      // set to fixed height (from 0 -> content), then auto after transition
       panel.style.height = inner.scrollHeight + 'px';
-      btn.querySelector('.acc-chevron')?.style.setProperty('transform', 'rotate(90deg)');
       const tidy = (e) => {
         if(e.propertyName === 'height'){
           panel.style.height = 'auto';
@@ -39,26 +41,25 @@
         }
       };
       panel.addEventListener('transitionend', tidy);
+      const chevron = btn.querySelector('.acc-chevron');
+      if (chevron) chevron.style.transform = 'rotate(90deg)';
     };
 
     const close = () => {
       item.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
-      // from current auto height -> fixed -> 0 (to animate closing)
       if (panel.style.height === 'auto' || panel.style.height === '') {
         panel.style.height = inner.scrollHeight + 'px';
       }
-      // force reflow
       void panel.offsetHeight;
       panel.style.height = '0px';
-      btn.querySelector('.acc-chevron')?.style.setProperty('transform', 'rotate(0deg)');
+      const chevron = btn.querySelector('.acc-chevron');
+      if (chevron) chevron.style.transform = 'rotate(0deg)';
     };
 
     const toggle = () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       if (expanded) close(); else {
-        // optional: close others for exclusive behavior
-        // qsa('.acc-item.open').forEach(other => other !== item && other.querySelector('.acc-btn').click());
         panel.style.height = '0px';
         requestAnimationFrame(open);
       }
