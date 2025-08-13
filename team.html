@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NATASHA — Team</title>
-  <link rel="stylesheet" href="style.css?v=fever2">
+  <link rel="stylesheet" href="style.css?v=v4">
 </head>
 <body>
   <header class="header">
@@ -20,13 +20,17 @@
   </header>
 
   <main>
-    <section class="container" style="padding: 42px 0 12px;">
+    <section class="container" style="padding: 34px 0 8px;">
       <h1>Team</h1>
-      <p class="muted">멤버 사진 위에 마우스를 올리면 흑백에서 컬러로 전환됩니다.</p>
+
+      <!-- Group photo (user will upload with uppercase extension .PNG) -->
+      <figure class="group-photo">
+        <img src="bandNatasha/assets/members/group.PNG" alt="NATASHA 단체사진">
+      </figure>
+
       <div class="team-grid">
         <article class="member-card">
-          <img class="member-photo" src="bandNatasha/assets/members/seokju.jpg" alt="김석주 — 보컬/기타" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='grid';">
-          <div class="fallback" style="display:none;">SEOKJU</div>
+          <img src="bandNatasha/assets/members/seokju.jpg" alt="김석주 — 보컬/기타" loading="lazy">
           <div class="member-meta">
             <div class="member-name">김석주</div>
             <div class="member-role">보컬/기타</div>
@@ -34,8 +38,7 @@
         </article>
 
         <article class="member-card">
-          <img class="member-photo" src="bandNatasha/assets/members/hyunwoo.jpg" alt="구현우 — 기타" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='grid';">
-          <div class="fallback" style="display:none;">HYUNWOO</div>
+          <img src="bandNatasha/assets/members/hyunwoo.jpg" alt="구현우 — 기타" loading="lazy">
           <div class="member-meta">
             <div class="member-name">구현우</div>
             <div class="member-role">기타</div>
@@ -43,8 +46,7 @@
         </article>
 
         <article class="member-card">
-          <img class="member-photo" src="bandNatasha/assets/members/byeongjun.jpg" alt="윤병준 — 베이스" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='grid';">
-          <div class="fallback" style="display:none;">BYEONGJUN</div>
+          <img src="bandNatasha/assets/members/byeongjun.jpg" alt="윤병준 — 베이스" loading="lazy">
           <div class="member-meta">
             <div class="member-name">윤병준</div>
             <div class="member-role">베이스</div>
@@ -52,8 +54,7 @@
         </article>
 
         <article class="member-card">
-          <img class="member-photo" src="bandNatasha/assets/members/taejun.jpg" alt="민태준 — 드럼" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='grid';">
-          <div class="fallback" style="display:none;">TAEJUN</div>
+          <img src="bandNatasha/assets/members/taejun.jpg" alt="민태준 — 드럼" loading="lazy">
           <div class="member-meta">
             <div class="member-name">민태준</div>
             <div class="member-role">드럼</div>

@@ -1,6 +1,8 @@
 
 /* ===============================
-   NATASHA EPK — FEVER THEME v2 (script.js)
+   NATASHA EPK — FEVER THEME v4 (script.js)
+   - Accordion: one-open-only behavior
+   - Smooth height transitions, no clipping
    =============================== */
 (function(){
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
@@ -9,7 +11,7 @@
     const btn = item.querySelector('.acc-btn');
     const panel = item.querySelector('.acc-panel');
 
-    // Wrap existing children into inner for reliable height
+    // Wrap children
     let inner = panel.querySelector('.acc-inner');
     if(!inner){
       inner = document.createElement('div');
@@ -29,6 +31,23 @@
     panel.setAttribute('aria-labelledby', btnId);
 
     const open = () => {
+      // close others (one-open-only)
+      qsa('.acc-item.open').forEach(other => {
+        if (other !== item) {
+          const otherBtn = other.querySelector('.acc-btn');
+          const otherPanel = other.querySelector('.acc-panel');
+          const otherInner = otherPanel.querySelector('.acc-inner');
+          other.classList.remove('open');
+          otherBtn.setAttribute('aria-expanded','false');
+          if (getComputedStyle(otherPanel).height === 'auto' || otherPanel.style.height === '') {
+            otherPanel.style.height = otherInner.scrollHeight + 'px';
+          }
+          void otherPanel.offsetHeight; // reflow
+          otherPanel.style.height = '0px';
+          const c = otherBtn.querySelector('.acc-chevron'); if (c) c.style.transform = 'rotate(0deg)';
+        }
+      });
+
       item.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
       panel.style.height = inner.scrollHeight + 'px';
