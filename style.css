@@ -233,5 +233,5 @@ img{ max-width: 100%; display: block; }
 
 /* Typography for lyric blocks */
 .lyrics{ white-space: pre-line; margin-top: 8px; color: var(--muted); }
-.credit{ margin-top: 8px; color: var(--muted); }
+.credit{ margin-top: 5px; color: var(--muted); }
 .credit strong{ color: var(--text); }
