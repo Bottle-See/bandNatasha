@@ -170,4 +170,7 @@ img{ max-width: 100%; display: block; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radia
+  background: radial-gradient(80% 80% at 20% 10%, rgba(255,255,255,0.12), transparent 45%),
+              linear-gradient(180deg, rgba(0,0,0,0.2), transparent 50%);
+  pointer-events: none;
+}
