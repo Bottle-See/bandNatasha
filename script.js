@@ -1,6 +1,6 @@
 
 /* ===============================
-   NATASHA EPK — Rebuild (script.js)
+   NATASHA EPK — FEVER THEME (script.js)
    Accordion: fully visible content, smooth transitions (no snapping)
    ARIA + keyboard
    =============================== */
